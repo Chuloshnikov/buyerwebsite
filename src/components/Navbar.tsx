@@ -21,7 +21,9 @@ const Navbar = () => {
                 <div>
                   <AiOutlineMessage onClick={() => setOpenMessagePanel(!openMessagePanel)} className='w-7 h-7 rounded-full hover:bg-orange-400 duration-300'/>
                   {openMessagePanel ? (
-                  <div className='absolute top-15 p-3 left-6 flex flex-col gap-2 border-[1px] border-gray-300 items-center bg-white rounded-md'>
+                  <div className='absolute top-15 p-3 left-6 flex flex-col gap-2 border-[1px]
+                   border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
+                   >
                     <a href="/"><BsTelegram className='w-7 h-7 text-blue-400'/></a>
                     <a href="/"><BsWhatsapp className='w-7 h-7 text-green-500'/></a>
                     <a></a>
@@ -69,7 +71,9 @@ const Navbar = () => {
                 </div>
                 {openMenu ? 
                 (
-                <div className='absolute top-20 right-5 p-4 flex flex-col gap-2 border-[1px] border-gray-300 items-center bg-white rounded-md'>
+                <div className='absolute top-20 right-5 p-4 flex flex-col gap-2 border-[1px]
+                 border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
+                 >
                     <div className='flex w-full justify-end'>
                       <button onClick={() => setOpenMenu(!openMenu)} className='block'><AiOutlineClose className='w-5 h-5'/></button>
                     </div>
