@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className='w-full bg-orange-400 text-white px-4 pt-8 pb-8 flex justify-between'>
+    <div className='w-full bg-orange-400 text-white px-4 pt-12 pb-16 flex xs:justify-center sm:justify-between'>
         <div className='flex items-center md:gap-2 xs:gap-1'>
             <a className='border:none xs:hidden md:block md:text-base' href="tel:+38-093-996-10-87">+38 093 996 10 87</a>
             <a className='xs:block md:hidden' href="tel:+38-093-996-10-87"><AiOutlinePhone className=' text-gray-600 w-7 h-7'/></a>
@@ -35,7 +35,7 @@ const Footer = () => {
                 <p className='text-white xs:hidden mdl:block'>Anastasiia</p>
               </div>
         </div>
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2 xs:hidden sm:flex'>
           <RiVisaLine className='w-20 h-20'/>
           <RiMastercardFill className='w-20 h-20'/>
         </div>

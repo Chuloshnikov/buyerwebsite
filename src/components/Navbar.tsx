@@ -79,8 +79,8 @@ const Navbar = () => {
                     </div>
                     <nav className='p-10'>
                       <ul className='flex flex-col gap-3'>
-                        <li>fgdgdgg</li>
-                        <li>dfgggfdg</li>
+                        <li><Link href="/catalog">Каталог</Link></li>
+                        <li>апвппапп</li>
                         <li>dfgdfgfg</li>
                         <li>dfgdfg</li>
                       </ul>
