@@ -1,0 +1,11 @@
+export interface Product {
+    _id: number;
+    title: string;
+    manufacturer: string;
+    description: string;
+    oldPrice: number;
+    price: number;
+    sizes: string;
+    img: string;
+    category: string;
+}[];
