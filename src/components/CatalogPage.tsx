@@ -2,7 +2,7 @@ import React from 'react';
 import { Item } from "../../type";
 import Image from "next/image";
 import { GoPlus } from 'react-icons/go';
-import { isTemplateSpan } from 'typescript';
+import Link from 'next/link';
 
 
 
@@ -17,7 +17,7 @@ const CatalogPage = ({ productData }: any) => {
                   className='w-full h-full object-contain scale-100 group-hover:scale-105 duration-300'
                   width={300} 
                   height={250} 
-                  src={item.img} 
+                  src={item.img[0]} 
                   alt="itemImage"/>
               </div>
                 {/* Description */}
@@ -29,11 +29,29 @@ const CatalogPage = ({ productData }: any) => {
                       <span><GoPlus/></span>
                       У кошик
                     </button>
-                    <button className='p-2 rounded-lg bg-orange-400 flex items-center justify-center
-                    hover:scale-105 hover:bg-orange-500 duration-300'
+                    <Link href={{
+                      pathname:`product/${item._id}`,
+                      query:{
+                        _id: item._id,
+                        title: item.title,
+                        brand: item.brand,
+                        description: item.description,
+                        oldPrice: item.oldPrice,
+                        price: item.price,
+                        sizes: item.sizes,
+                        img: item.img,
+                        category: item.category,
+                        quantity: item.quantity,
+                      }
+                    }}
+                    as={`product/${item._id}`}
                     >
-                      Детальніше
-                    </button>
+                        <button className='p-2 rounded-lg bg-orange-400 flex items-center justify-center
+                          hover:scale-105 hover:bg-orange-500 duration-300'
+                        >
+                          Детальніше
+                        </button>
+                    </Link>  
                   </div>
                   <div className='flex items-center gap-3 pt-2'>
                     <p className='text-lg font-semibold text-green-500'>

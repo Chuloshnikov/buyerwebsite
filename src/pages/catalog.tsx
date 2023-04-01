@@ -10,7 +10,7 @@ interface Props {
 const Catalog = ({ productData }: Props) => {
   console.log(productData);
   return (
-    <div>
+    <div className='max-w-contentContainer mx-auto'>
       <CatalogPage productData={productData}/>
     </div>
   )
