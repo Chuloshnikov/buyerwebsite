@@ -36,6 +36,14 @@ const ProductDetails = () => {
               ("")
               }
             </div>
+            <div className='p-2'>
+                <button className='xs:flex md:hidden items-center gap-1 py-3 px-2 bg-orange-400 text-white rounded-md 
+                hover:scale-105 hover:bg-orange-500 duration-300'
+                >
+                  <span><GoPlus/></span>
+                    Додати у кошик
+                </button>
+            </div>
             <div className='p-2 flex items-center justify-between'>
                 <h2 className='text-xl font-bold'>{product.title}</h2>
                 <p className='text-lg font-semibold'>{product.brand}</p>
@@ -63,7 +71,7 @@ const ProductDetails = () => {
                 <p className='text-sm font-base'>{product.description}</p>
             </div>
             <div className='p-2'>
-                <button className='flex items-center gap-1 py-3 px-2 bg-orange-400 text-white rounded-md 
+                <button className='xs:hidden mdl:flex items-center gap-1 py-3 px-2 bg-orange-400 text-white rounded-md 
                 hover:scale-105 hover:bg-orange-500 duration-300'
                 >
                   <span><GoPlus/></span>
