@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { GoPlus } from 'react-icons/go';
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/pagination";
+
+import { Pagination } from "swiper";
 
 const ProductDetails = () => {
   const router = useRouter();
@@ -20,11 +26,19 @@ const ProductDetails = () => {
     <div className='w-full bg-white text-gray-800 px-4'>
        <div className='max-w-contentContainer mx-auto flex items-center py-4 xs:flex-col lg:flex-row'>
           <div className='w-2/3 h-full xs:w-full flex items-center justify-center overflow-hidden relative'>
-          <img
-                src={product.img}
-                alt="productImg"
-                className='w-[80%] transform-origin-top-left cursor-move duration-500'
-                />
+          <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+              
+                {product.img && product.img.map(image => (
+                  <SwiperSlide> 
+                    <img
+                    src={image}
+                    alt="productImg"
+                    className='w-[100%] transform-origin-top-left cursor-move duration-500'
+                    />
+                </SwiperSlide>))
+                }
+      </Swiper>
+         
             
           </div>
           <div className='w-1/3 h-full xs:w-full flex flex-col gap-2'>

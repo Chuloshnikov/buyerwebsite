@@ -6,7 +6,7 @@ export interface Product {
     oldPrice: number;
     price: number;
     sizes: string;
-    img: Array<string>;
+    img: string[];
     category: string;
     quantity: number;
 }[];
@@ -19,7 +19,7 @@ export interface Item {
     oldPrice: number;
     price: number;
     sizes: string;
-    img: Array<string>;
+    img: string[];
     category: string;
     quantity: number;
 };
