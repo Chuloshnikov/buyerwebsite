@@ -1,7 +1,7 @@
 export interface Product {
     _id: number;
     title: string;
-    manufacturer: string;
+    brand: string;
     description: string;
     oldPrice: number;
     price: number;
@@ -14,7 +14,7 @@ export interface Product {
 export interface Item {
     _id: number;
     title: string;
-    manufacturer: string;
+    brand: string;
     description: string;
     oldPrice: number;
     price: number;

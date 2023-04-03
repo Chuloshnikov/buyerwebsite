@@ -1,6 +1,7 @@
 import React from 'react';
 import CatalogPage from '../components/CatalogPage';
 import { Product } from '../../type';
+import axios from 'axios';
 
 
 interface Props {
@@ -19,12 +20,13 @@ const Catalog = ({ productData }: Props) => {
 //=======data fatching
 
 export const getServerSideProps = async () => {
-  const productData = await (
-    await fetch("http://localhost:3000/api/productdata")
-  ).json();
+  const res = await axios.get("http://localhost:3000/api/productdata");
+  
 
   return {
-    props: { productData },
+    props: {
+      productData: res.data,
+    }
   }
 }
 

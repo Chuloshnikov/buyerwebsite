@@ -28,8 +28,8 @@ const ProductDetails = () => {
           <div className='w-2/3 h-full xs:w-full flex items-center justify-center overflow-hidden relative'>
           <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
               
-                {product.img && product.img.map(image => (
-                  <SwiperSlide> 
+                {product.img && product.img.map((image, index) => (
+                  <SwiperSlide key={index}> 
                     <img
                     src={image}
                     alt="productImg"
