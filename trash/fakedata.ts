@@ -1,19 +1,3 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-
-type Data = {
-    _id: number;
-    title: string;
-    manufacturer: string;
-    description: string;
-    oldPrice: number;
-    price: number;
-    sizes: string;
-    img: string[];
-    category: string;
-    quantity: number;
-}[];
-
-
 const productData = [
     {
         _id: 1,
@@ -124,10 +108,3 @@ const productData = [
         quantity: 0,
     },
 ];
-
-export default function handler(
-    req: NextApiRequest,
-    res: NextApiResponse<Data>
-) {
-    res.status(200).json(productData);
-}
