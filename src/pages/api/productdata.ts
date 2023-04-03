@@ -8,7 +8,7 @@ type Data = {
     oldPrice: number;
     price: number;
     sizes: string;
-    img: Array<string>;
+    img: string[];
     category: string;
     quantity: number;
 }[];
@@ -23,13 +23,13 @@ const productData = [
         oldPrice: 99,
         price: 55,
         sizes: "XS XL XXL",
-        img: [
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-            ],
+        img:  [  
+            "https://i.ibb.co/VL1Dnv1/4.webp",
+            "https://i.ibb.co/VL1Dnv1/5.webp",
+            "https://i.ibb.co/VL1Dnv1/6.webp",
+            "https://i.ibb.co/VL1Dnv1/3.webp",
+            "https://i.ibb.co/VL1Dnv1/8.webp",
+        ],
         category: "Boots",
         quantity: 0,
     },
@@ -41,14 +41,13 @@ const productData = [
         oldPrice: 99,
         price: 55,
         sizes: "XS XL XXL",
-        img: [
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                
-            ],
+        img:  [  
+            "https://i.ibb.co/VL1Dnv1/4.webp",
+            "https://i.ibb.co/VL1Dnv1/5.webp",
+            "https://i.ibb.co/VL1Dnv1/6.webp",
+            "https://i.ibb.co/VL1Dnv1/3.webp",
+            "https://i.ibb.co/VL1Dnv1/8.webp",
+        ],
         category: "Boots",
         quantity: 0,
     },
@@ -60,13 +59,13 @@ const productData = [
         oldPrice: 99,
         price: 55,
         sizes: "XS XL XXL",
-        img: [
+        img:  [  
             "https://i.ibb.co/VL1Dnv1/4.webp",
-            "https://i.ibb.co/VL1Dnv1/4.webp",
-            "https://i.ibb.co/VL1Dnv1/4.webp",
-            "https://i.ibb.co/VL1Dnv1/4.webp",
-            "https://i.ibb.co/VL1Dnv1/4.webp",
-            ],
+            "https://i.ibb.co/VL1Dnv1/5.webp",
+            "https://i.ibb.co/VL1Dnv1/6.webp",
+            "https://i.ibb.co/VL1Dnv1/3.webp",
+            "https://i.ibb.co/VL1Dnv1/8.webp",
+        ],
         category: "Boots",
         quantity: 0,
     },
@@ -78,13 +77,13 @@ const productData = [
         oldPrice: 99,
         price: 55,
         sizes: "XS XL XXL",
-        img: [
+        img:  [  
             "https://i.ibb.co/VL1Dnv1/4.webp",
-            "https://i.ibb.co/VL1Dnv1/4.webp",
-            "https://i.ibb.co/VL1Dnv1/4.webp",
-            "https://i.ibb.co/VL1Dnv1/4.webp",
-            "https://i.ibb.co/VL1Dnv1/4.webp",
-            ],
+            "https://i.ibb.co/VL1Dnv1/5.webp",
+            "https://i.ibb.co/VL1Dnv1/6.webp",
+            "https://i.ibb.co/VL1Dnv1/3.webp",
+            "https://i.ibb.co/VL1Dnv1/8.webp",
+        ],
         category: "Boots",
         quantity: 0,
     },
@@ -96,13 +95,13 @@ const productData = [
         oldPrice: 99,
         price: 55,
         sizes: "XS XL XXL",
-        img: [
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-            ],
+        img: [  
+            "https://i.ibb.co/VL1Dnv1/4.webp",
+            "https://i.ibb.co/VL1Dnv1/5.webp",
+            "https://i.ibb.co/VL1Dnv1/6.webp",
+            "https://i.ibb.co/VL1Dnv1/3.webp",
+            "https://i.ibb.co/VL1Dnv1/8.webp",
+        ],
         category: "Boots",
         quantity: 0,
     },
@@ -116,10 +115,10 @@ const productData = [
         sizes: "XS XL XXL",
         img: [  
                 "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
-                "https://i.ibb.co/VL1Dnv1/4.webp",
+                "https://i.ibb.co/VL1Dnv1/5.webp",
+                "https://i.ibb.co/VL1Dnv1/6.webp",
+                "https://i.ibb.co/VL1Dnv1/3.webp",
+                "https://i.ibb.co/VL1Dnv1/8.webp",
             ],
         category: "Boots",
         quantity: 0,
