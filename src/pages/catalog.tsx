@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CatalogPage from '../components/CatalogPage';
-import { Product } from '../../type';
 import axios from 'axios';
 
 
-interface Props {
-  productData: Product
-}
 
-const Catalog = ({ productData }: Props) => {
-  console.log(productData);
+
+const Catalog = () => {
+  const [productData, setProductData] = useState([]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [])
+  const  fetchProducts = async () => {
+    await axios.get('/api/productdata').then(result => {
+      setProductData(result.data);
+      console.log(productData);
+    });
+  }
+  
   return (
     <div className='max-w-contentContainer mx-auto'>
       <CatalogPage productData={productData}/>
@@ -18,7 +26,7 @@ const Catalog = ({ productData }: Props) => {
 }
 
 //=======data fatching
-
+/*
 export const getServerSideProps = async () => {
   const res = await axios.get("http://localhost:3000/api/productdata");
   
@@ -29,5 +37,6 @@ export const getServerSideProps = async () => {
     }
   }
 }
+*/
 
 export default Catalog;

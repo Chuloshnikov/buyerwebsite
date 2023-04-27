@@ -1,13 +1,16 @@
 import React from 'react';
 import { Item } from "../../type";
+import { Product } from '../../type';
 import Image from "next/image";
 import { GoPlus } from 'react-icons/go';
 import Link from 'next/link';
 
+interface Props {
+  productData: Product
+}
 
 
-
-const CatalogPage = ({ productData }: any) => {
+const CatalogPage = ({ productData }: Props) => {
   return (
     <div className='py-6 px-4 grid xs:grid-cols-1 md:grid-cols-2 mdl:grid-cols-3 lgl:grid-cols-4  gap-4'>
         {productData.map((item: Item) => (
