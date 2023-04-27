@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import Product from "../../../../models/Product";
-import dbConnect from "../../../../lib/dbConnect";
+import Product from "../../../models/Product";
+import dbConnect from "../../../lib/dbConnect";
 
 
 type Data = {
@@ -26,7 +26,7 @@ export default async function handler(
 
     const  {method} = req;
     
-    dbConnect();
+    await dbConnect();
 
     switch (method) {
         case "GET": {
