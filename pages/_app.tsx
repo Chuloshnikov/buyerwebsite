@@ -1,6 +1,6 @@
-import '@/styles/globals.css';
+import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import Layout from '@/components/Layout';
+import Layout from '../components/Layout';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
