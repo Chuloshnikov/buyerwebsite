@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Image from 'next/image';
 import logo from "../assets/images/logo.png" ;
 import { AiOutlineMessage, AiOutlineInstagram } from 'react-icons/ai';
@@ -13,19 +13,44 @@ const Navbar = () => {
 
   const [openMenu, setOpenMenu] = useState(false);
   const [openMessagePanel, setOpenMessagePanel] = useState(false);
+  const menuRef = useRef(null);
+
+
+  const toogleMenu = () => {
+    setOpenMenu(!openMenu);
+  }
+
+  const toogleMessagePanel = () => {
+    setOpenMessagePanel(!openMessagePanel);
+  }
+
+  useEffect(() => {
+    const handleDocumentClick = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpenMenu(false);
+        setOpenMessagePanel(false);
+      }
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  }, [])
 
   return (
         <div className='w-full bg-white text-gray-600 px-4 sticky top-0 z-50'>
            <div className='max-w-container mx-auto flex md:justify-between xs:justify-evenly items-center border-b-[1px] border-b-gray-300'>
               <div className='flex items-center md:gap-3 xs:gap-1'>
                 <div>
-                  <AiOutlineMessage onClick={() => setOpenMessagePanel(!openMessagePanel)} className='w-7 h-7 rounded-full hover:bg-orange-400 duration-300'/>
+                  <AiOutlineMessage onClick={toogleMessagePanel} className='w-7 h-7 rounded-full hover:bg-orange-400 duration-300'/>
                   {openMessagePanel ? (
                   <div className='absolute top-15 p-3 left-6 flex flex-col gap-2 border-[1px]
                    border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
                    >
-                    <a href="/"><BsTelegram className='w-7 h-7 text-blue-400'/></a>
-                    <a href="/"><BsWhatsapp className='w-7 h-7 text-green-500'/></a>
+                    <a onClick={toogleMessagePanel} href="/"><BsTelegram className='w-7 h-7 text-blue-400'/></a>
+                    <a onClick={toogleMessagePanel} href="/"><BsWhatsapp className='w-7 h-7 text-green-500'/></a>
                     <a></a>
                   </div>)
                    : ''}
@@ -66,7 +91,7 @@ const Navbar = () => {
                   </Link>
                 </div>
                 {/* Bascet End */}
-                <div onClick={() => setOpenMenu(!openMenu)}>
+                <div onClick={toogleMenu}>
                   {openMenu === true ? <BiMenuAltRight className='w-7 h-7'/> : <BiMenu className='w-7 h-7'/>}
                 </div>
                 {openMenu ? 
@@ -75,14 +100,14 @@ const Navbar = () => {
                  border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
                  >
                     <div className='flex w-full justify-end'>
-                      <button onClick={() => setOpenMenu(!openMenu)} className='block'><AiOutlineClose className='w-5 h-5'/></button>
+                      <button onClick={toogleMenu} className='block'><AiOutlineClose className='w-5 h-5'/></button>
                     </div>
                     <nav className='p-10'>
                       <ul className='flex flex-col gap-3'>
-                        <li><Link href="/catalog">Каталог</Link></li>
-                        <li>апвппапп</li>
-                        <li>dfgdfgfg</li>
-                        <li>dfgdfg</li>
+                        <li onClick={toogleMenu}><Link href="/catalog">Каталог</Link></li>
+                        <li onClick={toogleMenu}>апвппапп</li>
+                        <li onClick={toogleMenu}>dfgdfgfg</li>
+                        <li onClick={toogleMenu}>dfgdfg</li>
                       </ul>
                     </nav>
                 </div>) : ''}

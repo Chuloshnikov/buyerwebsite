@@ -4,14 +4,16 @@ import Image from 'next/image';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "swiper/css/effect-fade";
 import {
     slide1,
     slide2,
     slide3,
     slide4,
 } from '../assets/images/index';
+import Link from 'next/link';
 
-import { Autoplay, Pagination, Navigation } from "swiper";
+import { Autoplay, EffectFade, Pagination, Navigation } from "swiper";
 
 const Banner = () => {
   return (
@@ -19,6 +21,7 @@ const Banner = () => {
             <div className='w-full rounded-lg xs:h-[320px] md:h-[410px] shadow-bannerShadow relative'>
             <Swiper
         spaceBetween={30}
+        effect={"fade"}
         centeredSlides={true}
         autoplay={{
           delay: 2500,
@@ -28,7 +31,7 @@ const Banner = () => {
           clickable: true,
         }}
         navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[EffectFade, Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
         <SwiperSlide>
@@ -39,11 +42,11 @@ const Banner = () => {
           <div className='absolute w-60 h-full top-0 left-4 flex flex-col gap-3 text-white'>
             <h1 className='text-2xl font-bold '>Твій кращий баєр</h1>
             <p className='text-sm leading-5'>Замовляй товари в наявності</p>
-            <button className='bg-orange-400 text-white font-semibold
-             rounded-lg w-24 h-10 hover:bg-orange-500 duration-300'
+            <Link href={'/catalog'} className='bg-orange-400 text-white font-semibold
+             rounded-lg w-24 py-2 hover:bg-orange-500 duration-300 text-center items-center'
              >
-              Каталог
-             </button>
+              <span>Каталог</span>
+             </Link>
           </div>
           </SwiperSlide>
           <SwiperSlide>
