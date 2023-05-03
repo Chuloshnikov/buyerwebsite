@@ -2,9 +2,6 @@ import mongoose from "mongoose";
 
 
 const OrderSchema = new mongoose.Schema({
-    _id: {
-        type: Number, required: true, 
-    },
     name: {
         type: String, required: true, maxlength: 60
     },
