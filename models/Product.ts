@@ -22,7 +22,7 @@ const ProductSchema = new mongoose.Schema({
     },
     images: {
         type: [{type: String}]
-    }
+    },
     category: {
         type: String, required: true, maxlength: 60
     },
