@@ -28,18 +28,18 @@ export default async function handler(
     
     await dbConnect();
 
-    switch (method) {
-        case "GET": {
-            try {
-                const products = await Product.find();
-                res.status(200).json(products);
-            } catch (error) {
-                res.status(500).json(error);
-            }
+    if (method === 'GET') {
+        if (req.query?.id) {
+            res.json(await Product.findOne({_id: req.query.id}));
+        } else {
+            res.json(await Product.find());
         }
-        break;
+    
+    }
 
-        case "POST": {
+       
+
+        if (method === 'POST')  {
             try {
                 const productdata = await Product.create(req.body); 
                 res.status(201).json(productdata);
@@ -47,7 +47,4 @@ export default async function handler(
                 res.status(500).json(error)
             }
         }
-        break;
     }
-    
-}

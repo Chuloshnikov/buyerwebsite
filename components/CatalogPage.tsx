@@ -33,23 +33,7 @@ const CatalogPage = ({ productData }: Props) => {
                       <span><GoPlus/></span>
                       У кошик
                     </button>
-                    <Link href={{
-                      pathname:`product/${item._id}`,
-                      query:{
-                        _id: item._id,
-                        title: item.title,
-                        brand: item.brand,
-                        description: item.description,
-                        oldPrice: item.oldPrice,
-                        price: item.price,
-                        sizes: item.sizes,
-                        images: item.images,
-                        category: item.category,
-                        quantity: item.quantity,
-                      }
-                    }}
-                    as={`product/${item._id}`}
-                    >
+                    <Link href={`products/product/${item._id}`}>
                         <button className='p-2 rounded-lg bg-orange-400 flex items-center justify-center
                           hover:scale-105 hover:bg-orange-500 duration-300'
                         >
