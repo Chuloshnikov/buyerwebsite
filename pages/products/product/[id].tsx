@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { GoPlus } from 'react-icons/go';
 import { Swiper, SwiperSlide } from "swiper/react";
-import default_product from "../../assets/icons/default_product.png";
+import default_product from "../../../assets/icons/default_product.png";
+import axios from 'axios';
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -13,12 +14,19 @@ const ProductDetails = () => {
   const router = useRouter();
   const [product, setProduct] = useState<any>({});
   const [isLoading, setLoading] = useState(false);
+  const {id} = router.query;
+
 
   useEffect(() => {
+    if (!id) {
+      return;
+    }
     setLoading(true);
-    setProduct(router.query);
+    axios.get(`/api/productdata?id=${id}`).then(response => {
+      setProduct(response.data);
+    })
     setLoading(false);
-  },[]);
+  },[id]);
 
 
 
