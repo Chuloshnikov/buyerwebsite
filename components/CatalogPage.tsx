@@ -43,7 +43,7 @@ const CatalogPage = ({ productData }: Props) => {
                         oldPrice: item.oldPrice,
                         price: item.price,
                         sizes: item.sizes,
-                        img: item.img,
+                        images: item.images,
                         category: item.category,
                         quantity: item.quantity,
                       }

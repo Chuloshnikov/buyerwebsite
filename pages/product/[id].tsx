@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { GoPlus } from 'react-icons/go';
 import { Swiper, SwiperSlide } from "swiper/react";
+import default_product from "../../assets/icons/default_product.png";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -28,14 +29,19 @@ const ProductDetails = () => {
           <div className='w-2/3 h-full xs:w-full flex items-center justify-center overflow-hidden relative'>
           <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
               
-                {product.img && product.img.map((image, index) => (
+                {product.images ? (product.images.map((image, index) => (
                   <SwiperSlide key={index}> 
                     <img
                     src={image}
                     alt="productImg"
                     className='w-[100%] transform-origin-top-left cursor-move duration-500'
                     />
-                </SwiperSlide>))
+                </SwiperSlide>))) : (
+                    <img 
+                    src={default_product} 
+                    alt="productImg"
+                    className='w-[100%] transform-origin-top-left cursor-move duration-500'
+                    />)
                 }
       </Swiper>
          
