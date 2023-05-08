@@ -104,7 +104,7 @@ const Navbar = () => {
                     </div>
                     <nav className='p-10'>
                       <ul className='flex flex-col gap-3'>
-                        <li onClick={toogleMenu}><Link href="/catalog">Каталог</Link></li>
+                        <li onClick={toogleMenu}><Link href="/products">Каталог</Link></li>
                         <li onClick={toogleMenu}>апвппапп</li>
                         <li onClick={toogleMenu}>dfgdfgfg</li>
                         <li onClick={toogleMenu}>dfgdfg</li>

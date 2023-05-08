@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import CatalogPage from '../components/CatalogPage';
 import axios from 'axios';
+import Spinner from '../components/Spinner';
 
 
 
 
-const Catalog = () => {
+const Products = () => {
   const [productData, setProductData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   
   useEffect(() => {
+      setIsLoading(true);
     axios.get('/api/productdata').then(result => {
       setProductData(result.data);
+      setIsLoading(false);
     });
   }, []);
 
@@ -20,7 +24,9 @@ const Catalog = () => {
   
   return (
     <div className='max-w-contentContainer mx-auto'>
-      <CatalogPage productData={productData}/>
+      {isLoading && <Spinner/>}
+      <CatalogPage productData={productData}/> 
+      
     </div>
   )
 }
@@ -39,4 +45,4 @@ export const getServerSideProps = async () => {
 }
 */
 
-export default Catalog;
+export default Products;
