@@ -20,17 +20,17 @@ const ProductSchema = new mongoose.Schema({
     sizes: {
         type: String, required: false,
     },
-    images: {
-        type: [{type: String}]
-    },
     category: {
         type: String, required: true, maxlength: 60
     },
     quantity: {
         type: Number, required: true,
-    }
+    },
+    images: {
+        type: [{type: String}]
+    },
 }, {timestamps: true}
 );
 
 
-export default mongoose.models.ProductData || mongoose.model("ProductData", ProductSchema);
+export default mongoose.models.Product || mongoose.model("Product", ProductSchema);

@@ -1,5 +1,5 @@
 export interface Product {
-    _id: number;
+    _id: any;
     title: string;
     brand: string;
     description: string;
@@ -12,7 +12,7 @@ export interface Product {
 }[];
 
 export interface Item {
-    _id: number;
+    _id: any;
     title: string;
     brand: string;
     description: string;
