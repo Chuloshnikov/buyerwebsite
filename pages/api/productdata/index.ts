@@ -11,7 +11,7 @@ type Data = {
     oldPrice: number;
     price: number;
     sizes: string;
-    img: string[];
+    img: [string];
     category: string;
     quantity: number;
 }[];

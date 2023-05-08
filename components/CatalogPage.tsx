@@ -4,6 +4,7 @@ import { Product } from '../../type';
 import Image from "next/image";
 import { GoPlus } from 'react-icons/go';
 import Link from 'next/link';
+import default_product from "../assets/icons/default_product.png";
 
 interface Props {
   productData: Product
@@ -20,7 +21,7 @@ const CatalogPage = ({ productData }: Props) => {
                   className='w-full h-full object-contain scale-100 group-hover:scale-105 duration-300'
                   width={300} 
                   height={250} 
-                  src={item.img[0]} 
+                  src={item.images[0] ? item.images[0] : default_product} 
                   alt="itemImage"/>
               </div>
                 {/* Description */}

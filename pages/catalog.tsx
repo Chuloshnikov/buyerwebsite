@@ -8,15 +8,15 @@ import axios from 'axios';
 const Catalog = () => {
   const [productData, setProductData] = useState([]);
 
+  
   useEffect(() => {
-    fetchProducts();
-  }, [])
-  const  fetchProducts = async () => {
-    await axios.get('/api/productdata').then(result => {
+    axios.get('/api/productdata').then(result => {
       setProductData(result.data);
-      console.log(productData);
     });
-  }
+  }, []);
+
+  console.log(productData);
+
   
   return (
     <div className='max-w-contentContainer mx-auto'>
