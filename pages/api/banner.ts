@@ -7,4 +7,11 @@ export default async function handler(
     res: NextApiResponse<Data>
 ) {
 
+    const  {method} = req;
+    
+    await dbConnect();
+
+    if (method === 'GET') {
+        res.json(await BannerInfo.find());
+    }
 }
