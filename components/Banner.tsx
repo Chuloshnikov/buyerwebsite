@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from 'next/image';
 import "swiper/css";
@@ -14,6 +14,9 @@ import {
 import Link from 'next/link';
 
 import { Autoplay, EffectFade, Pagination, Navigation } from "swiper";
+
+
+
 
 const Banner = () => {
   return (
