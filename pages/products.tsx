@@ -19,7 +19,6 @@ const Products = () => {
     });
   }, []);
 
-  console.log(productData);
 
   
   return (
