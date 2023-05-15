@@ -8,9 +8,12 @@ import Link from "next/link";
 import { BiMenu, BiMenuAltRight } from 'react-icons/bi';
 import { AiOutlinePhone, AiOutlineClose } from 'react-icons/ai';
 import { BsTelegram, BsWhatsapp } from 'react-icons/bs';
+import { FaUserAlt } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-
+  const productData = useSelector((state:any) => state.buyer.productData);
+  console.log(productData);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMessagePanel, setOpenMessagePanel] = useState(false);
   const menuRef = useRef(null);
@@ -78,6 +81,12 @@ const Navbar = () => {
                 >
                   <FaFacebookF className='mdl:w-5 mdl:h-5 xs:w-7 xs:h-7'/>
                 </a>
+                <div className='felx flex-col gap-1'>
+                  <button>
+                      {/*login button*/}
+                        <FaUserAlt className='text-[24px]'/>
+                  </button>
+                </div>
                 {/* Bascet Start */}
                 <div className='mdl:ml-[30px] xs:ml-[5px] pt-3'>
                   <Link  href="/cart" passHref>
@@ -86,7 +95,7 @@ const Navbar = () => {
                     text-white text-xs rounded-full
                     flex flex-col justify-center items-center z-10'
                     >
-                      0
+                      {productData.length > 0 ? productData.length : 0}
                     </span>
                   </Link>
                 </div>
