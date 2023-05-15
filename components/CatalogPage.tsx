@@ -5,6 +5,9 @@ import Image from "next/image";
 import { GoPlus } from 'react-icons/go';
 import Link from 'next/link';
 import default_product from "../assets/icons/default_product.png";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/buyerslice';
+import toast, { Toaster } from 'react-hot-toast';
 
 interface Props {
   productData: Product
@@ -12,9 +15,11 @@ interface Props {
 
 
 const CatalogPage = ({ productData }: Props) => {
+  const dispatch = useDispatch();
+
   return (
     <div className='py-6 px-4 grid xs:grid-cols-1 md:grid-cols-2 mdl:grid-cols-3 lgl:grid-cols-4  gap-4'>
-        {productData.map((item: Item) => (
+        {productData?.length > 0 && productData.map((item: Item) => (
             <div key={item._id} className="border-[1px] border-gray-200 mb-6 group shadow-lg">
               <div className="w-full h-[350px] overflow-hidden p-1">
                 <Image 
@@ -27,7 +32,22 @@ const CatalogPage = ({ productData }: Props) => {
                 {/* Description */}
                 <div className='px-2 py-4 flex flex-col justify-center'>
                   <div className='text-base text-white flex justify-between'>
-                    <button className=' p-2 rounded-lg bg-orange-400 flex items-center justify-center gap-1
+                    <button 
+                    onClick={() => dispatch(
+                      addToCart({
+                        _id: item._id,
+                        title: item.title,
+                        brand: item.brand,
+                        oldPrice: item.oldPrice,
+                        price: item.price,
+                        description: item.description,
+                        sizes: item.sizes,
+                        category: item.category,
+                        images: item.images,
+                        quantity: item.quantity,
+                    })) && toast.success(`${item.title.substring(0,20)} додано у кошик`)
+                  }
+                    className=' p-2 rounded-lg bg-orange-400 flex items-center justify-center gap-1
                     hover:scale-105 hover:bg-orange-500 duration-300'
                     >
                       <span><GoPlus/></span>
@@ -56,6 +76,17 @@ const CatalogPage = ({ productData }: Props) => {
             </div>
           ))
         }  
+        <Toaster
+      reverseOrder={false}
+      position="top-center"
+      toastOptions={{
+        style:{
+          borderRadius: "8px",
+          background: "#333",
+          color: "#fff",
+        }
+      }}
+      />
     </div>
   )
 }

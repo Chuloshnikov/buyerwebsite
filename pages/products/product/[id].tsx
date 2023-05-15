@@ -4,14 +4,21 @@ import { GoPlus } from 'react-icons/go';
 import { Swiper, SwiperSlide } from "swiper/react";
 import default_product from "../../../assets/icons/default_product.png";
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../redux/buyerslice';
+import toast, { Toaster } from 'react-hot-toast';
 
 import "swiper/css";
 import "swiper/css/pagination";
 
 import { Pagination } from "swiper";
 
+
+
+
 const ProductDetails = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [product, setProduct] = useState<any>({});
   const [isLoading, setLoading] = useState(false);
   const {id} = router.query;
@@ -28,7 +35,7 @@ const ProductDetails = () => {
     setLoading(false);
   },[id]);
 
-
+  const _id = product._id;
 
   console.log(product);
   return (
@@ -63,7 +70,21 @@ const ProductDetails = () => {
               }
             </div>
             <div className='p-2'>
-                <button className='xs:flex md:hidden items-center gap-1 py-3 px-2 bg-orange-400 text-white rounded-md 
+                <button 
+                onClick={() => dispatch(addToCart({
+                  _id: product._id,
+                  title: product.title,
+                  brand: product.brand,
+                  oldPrice: product.oldPrice,
+                  price: product.price,
+                  description: product.description,
+                  sizes: product.sizes,
+                  category: product.category,
+                  images: product.images,
+                  quantity: product.quantity,
+                })) && toast.success(`${product.title.substring(0,20)} додано у кошик`)
+              }
+                className='xs:flex md:hidden items-center gap-1 py-3 px-2 bg-orange-400 text-white rounded-md 
                 hover:scale-105 hover:bg-orange-500 duration-300'
                 >
                   <span><GoPlus/></span>
@@ -97,7 +118,21 @@ const ProductDetails = () => {
                 <p className='text-sm font-base'>{product.description}</p>
             </div>
             <div className='p-2'>
-                <button className='xs:hidden mdl:flex items-center gap-1 py-3 px-2 bg-orange-400 text-white rounded-md 
+                <button 
+                onClick={() => dispatch(addToCart({
+                  _id: product._id,
+                  title: product.title,
+                  brand: product.brand,
+                  oldPrice: product.oldPrice,
+                  price: product.price,
+                  description: product.description,
+                  sizes: product.sizes,
+                  category: product.category,
+                  images: product.images,
+                  quantity: product.quantity,
+                })) && toast.success(`${product.title.substring(0,20)} додано у кошик`)
+              }
+                className='xs:hidden mdl:flex items-center gap-1 py-3 px-2 bg-orange-400 text-white rounded-md 
                 hover:scale-105 hover:bg-orange-500 duration-300'
                 >
                   <span><GoPlus/></span>
@@ -106,6 +141,17 @@ const ProductDetails = () => {
             </div>
           </div>
        </div>
+       <Toaster
+      reverseOrder={false}
+      position="top-center"
+      toastOptions={{
+        style:{
+          borderRadius: "8px",
+          background: "#333",
+          color: "#fff",
+        }
+      }}
+      />
     </div>
   )
 }
