@@ -48,8 +48,11 @@ export const buyerslice = createSlice({
             },
             deleteItem: (state, action) => {
                 state.productData = state.productData.filter(
-                    (item) => item._id !== action.payload
+                    (item: StoreProduct) => item._id !== action.payload
                 );
+            },
+            resetCart: (state) => {
+                state.productData = [];
             },
         }
     });

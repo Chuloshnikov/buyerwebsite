@@ -44,7 +44,7 @@ const CatalogPage = ({ productData }: Props) => {
                         sizes: item.sizes,
                         category: item.category,
                         images: item.images,
-                        quantity: item.quantity,
+                        quantity: 1,
                     })) && toast.success(`${item.title.substring(0,20)} додано у кошик`)
                   }
                     className=' p-2 rounded-lg bg-orange-400 flex items-center justify-center gap-1
