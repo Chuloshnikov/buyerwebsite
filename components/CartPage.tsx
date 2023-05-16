@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetCart, deleteItem, minusQuantity, plusQuantity } from '../redux/buyerSlice';
 import { StoreProduct } from '../type';
 import default_product from '../assets/icons/default_product.png';
 import { isTemplateMiddle } from 'typescript';
+
+import { IoMdClose } from "react-icons/md";
 
 import { HiMinusSmall } from 'react-icons/hi2';
 import { MdOutlineAdd } from 'react-icons/md';
@@ -13,7 +15,19 @@ import FormatePrice from './FormatePrice';
 const CartPage = () => {
     const dispatch = useDispatch()
     const productData = useSelector((state: any) => state.buyer.productData);
-    console.log(productData);
+    //prices
+    const [totalOldPrice, setTotalOldPrice] = useState();
+    const [totalSavings, setTotalSavings] = useState();
+    const [totalAmt, setTotalAmt] = useState();
+
+    useEffect(() => {
+        let amt = 0;
+        productData.map((item: StoreProduct) => {
+            amt += item.price * item.quantity;
+            return
+        });
+        setTotalAmt(amt);
+    }, [productData]);
   return (
     <div className='w-full py-10 px-5'>
         <div className='w-full flex xs:flex-col lg:flex-row gap-10'>
@@ -156,13 +170,39 @@ const CartPage = () => {
             <div className='lg:w-1/3 p-4 h-[500px] xs:w-full flex flex-col border-[1px] border-zinc-400 rounded-md
             justify-center gap-4'
             >
-                <button
-                className='bg-green-600 hover:bg-green-700 
-                w-full text-white h-10 rounded-md 
-                font-semibold duration-300'
-                >
-                    Оформити замовлення
-                </button>
+                <div>
+                    <button
+                    className='bg-green-600 hover:bg-green-700 
+                    hover:scale-105 w-full text-white h-10 rounded-md 
+                    font-semibold duration-300'
+                    >
+                        Оформити замовлення
+                    </button>
+                    <p className='text-sm text-center text-red-500 font-semibold'>
+                        Будь ласка зареєструйтесь для оформлення замовлення
+                    </p>
+                </div>
+                {/* checkout price */}
+                <div className='w-full flex flex-col gap-4 border-b-[1px] border-b-zinc-200 pb-4'>
+                    <div className='flex flex-col gap-1'>
+                        <div className='text-sm flex justify-between'>
+                            <p className='font-semibold'>
+                                Позицій <span>({productData.length})</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className='text-sm flex justify-between'>
+                    <p>Разом до сплати</p>
+                    <p className='text-[#565151] font-bold text-lg'>
+                        <FormatePrice amount={totalAmt}/>
+                    </p>
+                </div>
+                <div className='w-full flex flex-col gap-4 border-t-[1px] border-t-zinc-200 pt-4'>
+                    <p className='text-yellow-700 font-bold text-md text-center' >
+                        Доставка оплачується окремо згідно із тарифами служби доставки.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
