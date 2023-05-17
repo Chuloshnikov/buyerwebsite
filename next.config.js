@@ -7,7 +7,8 @@ const nextConfig = {
     "images.pexels.com", 
     "lh3.googleusercontent.com", 
     'images.unsplash.com',
-    'buyer-anastasiia.s3.amazonaws.com'],
+    'buyer-anastasiia.s3.amazonaws.com',
+    "res.cloudinary.com"],
   },
 }
 

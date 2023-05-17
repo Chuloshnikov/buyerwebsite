@@ -194,7 +194,7 @@ const CartPage = () => {
                     </div>
                 </div>
                 <div className='text-sm flex justify-between'>
-                    <p>Разом до сплати</p>
+                    <p className='font-normal text-lg'>Разом до сплати:</p>
                     <p className='text-[#565151] font-bold text-lg'>
                         <FormatePrice amount={totalAmt}/>
                     </p>
