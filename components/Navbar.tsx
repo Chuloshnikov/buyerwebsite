@@ -17,6 +17,7 @@ const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openMessagePanel, setOpenMessagePanel] = useState(false);
   const menuRef = useRef(null);
+  const session = '';
 
 
   const toogleMenu = () => {
@@ -84,7 +85,18 @@ const Navbar = () => {
                 <div className='felx flex-col gap-1'>
                   <button>
                       {/*login button*/}
-                        <FaUserAlt className='text-[24px]'/>
+                       {session ? (
+                       <div className='text-green-700 flex flex-col items-center'>
+                          <FaUserAlt className='text-[24px]'/>
+                          <span className='font-medium text-xs xs:hidden mdl:inline'>Log out</span>
+                        </div>
+                        ) : (
+                          <div className='text-red-500 flex flex-col items-center'>
+                            <FaUserAlt className='text-[24px]'/>
+                            <span className='font-medium text-xs xs:hidden mdl:inline'>Log in</span>
+                          </div>
+                        )
+                        } 
                   </button>
                 </div>
                 {/* Bascet Start */}

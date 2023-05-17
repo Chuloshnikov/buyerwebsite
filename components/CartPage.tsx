@@ -5,6 +5,7 @@ import { resetCart, deleteItem, minusQuantity, plusQuantity } from '../redux/buy
 import { StoreProduct } from '../type';
 import default_product from '../assets/icons/default_product.png';
 import { isTemplateMiddle } from 'typescript';
+import { novalogo, novaCar } from '../assets/images/index';
 
 import { IoMdClose } from "react-icons/md";
 
@@ -202,6 +203,12 @@ const CartPage = () => {
                     <p className='text-yellow-700 font-bold text-md text-center' >
                         Доставка оплачується окремо згідно із тарифами служби доставки.
                     </p>
+                </div>
+                <div>
+                    <div className='bg-gray-200 w-full flex items-center justify-between rounded-md overflow-hidden'>
+                        <Image className='p-1' src={novalogo} width={80} height={80}/>
+                        <Image className='p-1' src={novaCar} width={100} height={100}/>
+                    </div>
                 </div>
             </div>
         </div>
