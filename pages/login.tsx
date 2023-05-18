@@ -10,10 +10,17 @@ import {
 } from '../assets/images/index';
 import { HiAtSymbol, HiFingerPrint } from 'react-icons/hi';
 import styles from '../styles/CredentialsForm.module.css';
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Login = () => {
 
     const [show, setShow] = useState(false);
+
+    //Google handler function 
+
+    async function handleGoogleSignIn() {
+        signIn('google', { callbackUrl: "http://localhost:3000"});
+    }
 
   return (
         <CredentialsForm>
@@ -58,7 +65,8 @@ const Login = () => {
                         >
                             Логін
                         </button>
-                        <button 
+                        <button
+                        onClick={handleGoogleSignIn} 
                         className='text-gray-600 flex gap-1 items-center 
                         justify-center border-2 
                         py-1 mx-12 rounded-md hover:scale-105 duration-300'
