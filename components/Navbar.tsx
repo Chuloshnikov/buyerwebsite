@@ -17,7 +17,7 @@ const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openMessagePanel, setOpenMessagePanel] = useState(false);
   const menuRef = useRef(null);
-  const session = '';
+  const [session, setSession] = useState(false);
 
 
   const toogleMenu = () => {
@@ -129,6 +129,8 @@ const Navbar = () => {
                         <li onClick={toogleMenu}>апвппапп</li>
                         <li onClick={toogleMenu}>dfgdfgfg</li>
                         <li onClick={toogleMenu}>dfgdfg</li>
+                        {!session && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
+                        {session && (<li onClick={toogleMenu}><Link href="/profile">Мій профіль</Link></li>)}
                       </ul>
                     </nav>
                 </div>) : ''}
