@@ -10,6 +10,7 @@ import { AiOutlinePhone, AiOutlineClose } from 'react-icons/ai';
 import { BsTelegram, BsWhatsapp } from 'react-icons/bs';
 import { FaUserAlt } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const productData = useSelector((state:any) => state.buyer.productData);
@@ -17,7 +18,8 @@ const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openMessagePanel, setOpenMessagePanel] = useState(false);
   const menuRef = useRef(null);
-  const [session, setSession] = useState(false);
+  const { data: session } = useSession();
+  console.log(session)
 
 
   const toogleMenu = () => {
@@ -86,15 +88,19 @@ const Navbar = () => {
                   <button>
                       {/*login button*/}
                        {session ? (
-                       <div className='text-green-700 flex flex-col items-center'>
+                       <button
+                       onClick={() => signOut({callbackUrl: "http://localhost:3000"})}
+                       className='text-green-700 flex flex-col items-center'>
                           <FaUserAlt className='text-[24px]'/>
                           <span className='font-medium text-xs xs:hidden mdl:inline'>Log out</span>
-                        </div>
+                      </button>
                         ) : (
-                          <div className='text-red-500 flex flex-col items-center'>
+                          <Link
+                          href={'/login'}
+                          className='text-red-500 flex flex-col items-center'>
                             <FaUserAlt className='text-[24px]'/>
                             <span className='font-medium text-xs xs:hidden mdl:inline'>Log in</span>
-                          </div>
+                          </Link>
                         )
                         } 
                   </button>
