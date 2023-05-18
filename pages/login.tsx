@@ -24,7 +24,7 @@ const Login = () => {
                 <link rel="icon" href="/buyerfavicon.ico" />
             </Head>
             <section className='mx-auto flex flex-col'>
-                <h1>Реєстрація</h1>
+                <h1>Логін</h1>
                 <form className='flex flex-col gap-2 mt-5'>
                     <div className='flex justify-center'>
                         <input
@@ -56,14 +56,14 @@ const Login = () => {
                         font-semibold text-center mx-12 rounded-md py-1
                         hover:scale-105 duration-300'
                         >
-                            Реєстрація
+                            Логін
                         </button>
                         <button 
                         className='text-gray-600 flex gap-1 items-center 
                         justify-center border-2 
                         py-1 mx-12 rounded-md hover:scale-105 duration-300'
                         >
-                            <span>Реєстрація з Google</span>
+                            <span>Авторизація з Google</span>
                             <Image src={googleLogo} width={14} height={14}/>
                         </button>
                         <button 
@@ -71,7 +71,7 @@ const Login = () => {
                         justify-center border-2
                         py-1 mx-12 rounded-md hover:scale-105 duration-300'
                         >
-                            <span>Реєстрація з Instagram</span>
+                            <span>Авторизація з Instagram</span>
                             <Image src={instagramLogo} width={14} height={14}/>
                         </button>
                         <button 
@@ -79,7 +79,7 @@ const Login = () => {
                         justify-center border-2
                         py-1 mx-12 rounded-md hover:scale-105 duration-300'
                         >
-                            <span>Реєстрація з Facebook</span>
+                            <span>Авторизація з Facebook</span>
                             <Image src={facebookLogo} width={14} height={14}/>
                         </button>
                     </div>
