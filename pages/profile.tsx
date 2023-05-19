@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { getSession, useSession } from 'next-auth/react';
+import Image from 'next/image';
+import Link from 'next/link';
+import Head from 'next/head';
 
 export default function Profile(){
 
@@ -7,7 +10,17 @@ export default function Profile(){
 
 
   return (
-    <div>Profile</div>
+    <>
+      <Head>
+        <title>Log in</title>
+        <meta name="Баєр Анастасія" content="Tвій найкращий баєр" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/buyerfavicon.ico" />
+      </Head>
+      <section>
+        Profile
+      </section>
+    </>
   )
 };
 
