@@ -22,6 +22,14 @@ const Login = () => {
         signIn('google', { callbackUrl: "http://localhost:3000"});
     }
 
+    async function handleInstagramSignIn() {
+        signIn('instagram', { callbackUrl: "http://localhost:3000"});
+    }
+
+    async function handleFacebookSignIn() {
+        signIn('facebook', { callbackUrl: "http://localhost:3000"});
+    }
+
   return (
         <CredentialsForm>
             <Head>
@@ -65,33 +73,37 @@ const Login = () => {
                         >
                             Логін
                         </button>
+                    </div>
+                </form>
+                    <div className='flex flex-col gap-2 mt-2'>
                         <button
-                        onClick={handleGoogleSignIn} 
-                        className='text-gray-600 flex gap-1 items-center 
-                        justify-center border-2 
-                        py-1 mx-12 rounded-md hover:scale-105 duration-300'
+                            onClick={handleGoogleSignIn} 
+                            className='text-gray-600 flex gap-1 items-center 
+                            justify-center border-2 
+                            py-1 mx-12 rounded-md hover:scale-105 duration-300'
                         >
                             <span>Авторизація з Google</span>
                             <Image src={googleLogo} width={14} height={14}/>
                         </button>
                         <button 
-                        className='text-gray-600 flex gap-1 items-center 
-                        justify-center border-2
-                        py-1 mx-12 rounded-md hover:scale-105 duration-300'
+                            onClick={handleInstagramSignIn}
+                            className='text-gray-600 flex gap-1 items-center 
+                            justify-center border-2
+                            py-1 mx-12 rounded-md hover:scale-105 duration-300'
                         >
                             <span>Авторизація з Instagram</span>
                             <Image src={instagramLogo} width={14} height={14}/>
                         </button>
                         <button 
-                        className='text-gray-600 flex gap-1 items-center 
-                        justify-center border-2
-                        py-1 mx-12 rounded-md hover:scale-105 duration-300'
+                            onClick={handleFacebookSignIn}
+                            className='text-gray-600 flex gap-1 items-center 
+                            justify-center border-2
+                            py-1 mx-12 rounded-md hover:scale-105 duration-300'
                         >
                             <span>Авторизація з Facebook</span>
                             <Image src={facebookLogo} width={14} height={14}/>
                         </button>
                     </div>
-                </form>
                 <p className='mt-10 text-xs font-semibold text-center text-gray-400'>
                     Ви ще не зареєструвались?{' '}
                     <Link className='text-blue-600 hover:underline duration-200' href={'/register'}>
