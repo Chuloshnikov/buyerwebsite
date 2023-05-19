@@ -12,6 +12,7 @@ import { HiAtSymbol, HiFingerPrint } from 'react-icons/hi';
 import styles from '../styles/CredentialsForm.module.css';
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useFormik } from 'formik';
+import login_validate from '../lib/validate';
 
 const Login = () => {
 
@@ -24,9 +25,8 @@ const Login = () => {
         email: '',
         password: '',
         },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-          },
+        validate: login_validate,
+        onSubmit
     });
 
     async function onSubmit(values) {
@@ -74,6 +74,11 @@ const Login = () => {
                         className="text-gray-400 -ml-6 mt-1"
                         />
                     </div>
+                    {formik.errors.email && formik.touched.email ? 
+                    <span 
+                        className='text-xs text-rose-500'>
+                            {formik.errors.email}
+                    </span> : <></>}
                     <div className='flex justify-center'>
                         <input
                         className='border-b-[1px] border-b-gray-400 text-gray-700'
@@ -89,6 +94,12 @@ const Login = () => {
                         className="text-gray-400 -ml-6 mt-1"
                         />
                     </div>
+                    {formik.errors.password && formik.touched.password ? 
+                    <span 
+                        className='text-xs text-rose-500'
+                    >
+                        {formik.errors.password}
+                    </span> : <></>}
                     <div className='flex flex-col gap-2 mt-2'>
                         <button 
                         type='submit'
