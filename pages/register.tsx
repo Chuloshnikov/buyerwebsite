@@ -4,11 +4,24 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from 'react-icons/hi2';
-import styles from '../styles/CredentialsForm.module.css';
+
+import { useFormik } from 'formik';
 
 const Register = () => {
     const [show, setShow] = useState({password: false, cpassword: false});
+    const formik = useFormik({
+        initialValues: {
+            username: '',
+            email: '',
+            password: '',
+            cpassword: '',
+        },
+        onSubmit
+    })
 
+    async function onSubmit(values) {
+        console.log(values);
+    }
 
   return (
         <CredentialsForm>
@@ -20,13 +33,16 @@ const Register = () => {
             </Head>
             <section className='mx-auto flex flex-col'>
             <h1>Регістрація</h1>
-                <form className='flex flex-col gap-2 mt-5'>
+                <form 
+                onSubmit={formik.handleSubmit}
+                className='flex flex-col gap-2 mt-5'>
                 <div className='flex justify-center'>
                         <input
                         className='border-b-[1px] border-b-gray-400 text-gray-700'
                         type="text"
                         name="Username"
                         placeholder='Username'
+                        {...formik.getFieldProps('username')}
                         />
                         <HiOutlineUser
                         size={20} 
@@ -39,6 +55,7 @@ const Register = () => {
                         type="email"
                         name="email"
                         placeholder='Email'
+                        {...formik.getFieldProps('email')}
                         />
                         <HiAtSymbol
                         size={20} 
@@ -51,6 +68,7 @@ const Register = () => {
                         type={`${show.password ? "text" : "password"}`}
                         name="password"
                         placeholder='Password'
+                        {...formik.getFieldProps('password')}
                         />
                         <HiFingerPrint
                         onClick={() => setShow({ ...show, password: !show.password })}
@@ -64,6 +82,7 @@ const Register = () => {
                         type={`${show.cpassword ? "text" : "password"}`}
                         name="password"
                         placeholder='Confirm Password'
+                        {...formik.getFieldProps('cpassword')}
                         />
                         <HiFingerPrint
                         onClick={() => setShow({ ...show, cpassword: !show.cpassword })}

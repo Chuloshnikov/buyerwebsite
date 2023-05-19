@@ -11,10 +11,27 @@ import {
 import { HiAtSymbol, HiFingerPrint } from 'react-icons/hi';
 import styles from '../styles/CredentialsForm.module.css';
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useFormik } from 'formik';
 
 const Login = () => {
 
     const [show, setShow] = useState(false);
+
+    //auth form
+
+    const formik = useFormik({
+        initialValues: {
+        email: '',
+        password: '',
+        },
+        onSubmit: values => {
+            alert(JSON.stringify(values, null, 2));
+          },
+    });
+
+    async function onSubmit(values) {
+        console.log(values);
+    }
 
     //Google handler function 
 
@@ -40,13 +57,17 @@ const Login = () => {
             </Head>
             <section className='mx-auto flex flex-col'>
                 <h1>Логін</h1>
-                <form className='flex flex-col gap-2 mt-5'>
+                <form 
+                onSubmit={formik.handleSubmit}
+                className='flex flex-col gap-2 mt-5'>
                     <div className='flex justify-center'>
                         <input
                         className='border-b-[1px] border-b-gray-400 text-gray-700'
+                        id="email"
                         type="email"
                         name="email"
                         placeholder='Email'
+                        {...formik.getFieldProps('email')}
                         />
                         <HiAtSymbol 
                         size={20} 
@@ -57,8 +78,10 @@ const Login = () => {
                         <input
                         className='border-b-[1px] border-b-gray-400 text-gray-700'
                         type={`${show ? "text" : "password"}`}
+                        id="password"
                         name="password"
                         placeholder='Password'
+                        {...formik.getFieldProps('password')}
                         />
                         <HiFingerPrint 
                         onClick={() => setShow(!show)}
@@ -67,7 +90,9 @@ const Login = () => {
                         />
                     </div>
                     <div className='flex flex-col gap-2 mt-2'>
-                        <button className='bg-green-600 text-white 
+                        <button 
+                        type='submit'
+                        className='bg-green-600 text-white 
                         font-semibold text-center mx-12 rounded-md py-1
                         hover:scale-105 duration-300'
                         >
