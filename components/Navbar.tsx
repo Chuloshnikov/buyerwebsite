@@ -43,7 +43,8 @@ const Navbar = () => {
     return () => {
       document.removeEventListener('click', handleDocumentClick);
     };
-  }, [])
+  }, []);
+
 
   return (
         <div className='w-full bg-white text-gray-600 px-4 sticky top-0 z-50'>
@@ -89,7 +90,7 @@ const Navbar = () => {
                       {/*login button*/}
                        {session ? (
                        <button
-                       onClick={() => signOut({callbackUrl: "http://localhost:3000"})}
+                       onClick={() => signOut()}
                        className='text-green-700 flex flex-col items-center'>
                           <FaUserAlt className='text-[24px]'/>
                           <span className='font-medium text-xs xs:hidden mdl:inline'>Log out</span>
@@ -137,6 +138,17 @@ const Navbar = () => {
                         <li onClick={toogleMenu}>dfgdfg</li>
                         {!session && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
                         {session && (<li onClick={toogleMenu}><Link href="/profile">Мій профіль</Link></li>)}
+                        {
+                        session && (
+                        <li onClick={toogleMenu}>
+                          <span 
+                          className='cursor-pointer'
+                            onClick={() => signOut()}
+                            >
+                              Вийти
+                          </span>
+                        </li>)
+                        }
                       </ul>
                     </nav>
                 </div>) : ''}
