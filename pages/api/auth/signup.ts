@@ -25,10 +25,10 @@ export default async function handler(
         if(checkexisting) return res.status(422).json({ message: "User Already Exists...!"});
 
         //hash password
-        User.create({ username, email, password : await hash(password, 12)}, function(err, data){
-            if(err) return res.status(404).json({ err });
-            res.status(201).json({ status : true, user: data})
-        })
+
+        const newUser = await User.create({username, email, password : await hash(password, 12)});
+        res.status(201).json(newUser)
+        
 
     } else {
         res.status(500).json({ message: "HTTP method not valid only POST Accepted"});
