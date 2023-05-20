@@ -7,6 +7,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import dbConnect from "../../../lib/dbConnect";
 import User from "../../../models/User";
 import { compare } from "bcryptjs";
+import clientPromise from "../../../lib/clientPromise";
 
 export default NextAuth({
     providers: [
@@ -52,5 +53,4 @@ export default NextAuth({
           }
         })
     ]
-    
 })

@@ -7,8 +7,11 @@ import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from 'react-icons/hi2';
 
 import { useFormik } from 'formik';
 import { register_validate } from '../lib/validate';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const Register = () => {
+    const router = useRouter();
     const [show, setShow] = useState({password: false, cpassword: false});
     const formik = useFormik({
         initialValues: {
@@ -22,7 +25,17 @@ const Register = () => {
     })
 
     async function onSubmit(values) {
-        console.log(values);
+        const options = {
+            method: "POST",
+            headers : { 'Content-Type': 'application/json'},
+            body: JSON.stringify(values)
+        }
+
+        await fetch('http://localhost:3000/api/auth/signup', options)
+        .then(res => res.json())
+        .then((data) => {
+            if(data) router.push('http://localhost:3000')
+        })
     }
 
   return (
