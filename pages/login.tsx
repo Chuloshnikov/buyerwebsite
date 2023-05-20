@@ -13,10 +13,12 @@ import styles from '../styles/CredentialsForm.module.css';
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useFormik } from 'formik';
 import { login_validate } from '../lib/validate';
+import { useRouter } from 'next/router';
 
 const Login = () => {
 
     const [show, setShow] = useState(false);
+    const router = useRouter();
 
     //auth form
 
@@ -30,7 +32,14 @@ const Login = () => {
     });
 
     async function onSubmit(values) {
-        console.log(values);
+        const status = await signIn('credentials', {
+            redirect: false,
+            email: values.email,
+            password: values.password,
+            callbackUrl: "/"
+        })
+
+        if(status.ok) router.push(status.url)
     }
 
     //Google handler function 
