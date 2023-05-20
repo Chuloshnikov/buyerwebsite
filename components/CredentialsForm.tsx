@@ -6,7 +6,7 @@ const CredentialsForm = ({children}) => {
   
         <div className='flex py-10'>
             <div className='m-auto bg-white rounded-md flex'>
-                <div className='shadow-bannerShadow'>
+                <div className='shadow-bannerShadow xs:hidden mdl:block'>
                     <div className='w-[300px] h-[400px]'>
                         Images
                     </div>
