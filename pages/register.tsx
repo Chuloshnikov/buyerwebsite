@@ -40,7 +40,8 @@ const Register = () => {
                 className='flex flex-col gap-2 mt-5'>
                 <div className='flex justify-center'>
                         <input
-                        className='border-b-[1px] border-b-gray-400 text-gray-700'
+                        className={`border-b-[2px] border-b-gray-400 text-gray-700 
+                        ${formik.errors.username ? 'border-b-rose-600' : ''}`}
                         type="text"
                         name="Username"
                         placeholder='Username'
@@ -51,14 +52,10 @@ const Register = () => {
                         className="text-gray-400 -ml-6 mt-1"
                         />
                     </div>
-                    {formik.errors.username && formik.touched.username ? 
-                    <span 
-                        className='text-xs text-rose-500'>
-                            {formik.errors.username}
-                    </span> : <></>}
                     <div className='flex justify-center'>
                         <input
-                        className='border-b-[1px] border-b-gray-400 text-gray-700'
+                        className={`border-b-[2px] border-b-gray-400 text-gray-700 
+                        ${formik.errors.email ? 'border-b-rose-600' : ''}`}
                         type="email"
                         name="email"
                         placeholder='Email'
@@ -69,14 +66,10 @@ const Register = () => {
                         className="text-gray-400 -ml-6 mt-1"
                         />
                     </div>
-                    {formik.errors.email && formik.touched.email ? 
-                    <span 
-                        className='text-xs text-rose-500'>
-                            {formik.errors.email}
-                    </span> : <></>}
                     <div className='flex justify-center'>
                         <input
-                        className='border-b-[1px] border-b-gray-400 text-gray-700'
+                        className={`border-b-[2px] border-b-gray-400 text-gray-700 
+                        ${formik.errors.password ? 'border-b-rose-600' : ''}`}
                         type={`${show.password ? "text" : "password"}`}
                         name="password"
                         placeholder='Password'
@@ -88,15 +81,10 @@ const Register = () => {
                         className="text-gray-400 -ml-6 mt-1"
                         />
                     </div>
-                    {formik.errors.password && formik.touched.password ? 
-                    <span 
-                        className='text-xs text-rose-500'
-                    >
-                        {formik.errors.password}
-                    </span> : <></>}
                     <div className='flex justify-center'>
                         <input
-                        className='border-b-[1px] border-b-gray-400 text-gray-700'
+                        className={`border-b-[2px] border-b-gray-400 text-gray-700 
+                        ${formik.errors.cpassword ? 'border-b-rose-600' : ''}`}
                         type={`${show.cpassword ? "text" : "password"}`}
                         name="password"
                         placeholder='Confirm Password'
@@ -108,12 +96,6 @@ const Register = () => {
                         className="text-gray-400 -ml-6 mt-1"
                         />
                     </div>
-                    {formik.errors.cpassword && formik.touched.cpassword ? 
-                    <span 
-                        className='text-xs text-rose-500'
-                    >
-                        {formik.errors.cpassword}
-                    </span> : <></>}
                     <div className='flex flex-col gap-2 mt-2'>
                         <button className='bg-green-600 text-white 
                         font-semibold text-center mx-12 rounded-md py-1

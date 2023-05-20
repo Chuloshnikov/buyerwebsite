@@ -12,7 +12,7 @@ import { HiAtSymbol, HiFingerPrint } from 'react-icons/hi';
 import styles from '../styles/CredentialsForm.module.css';
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useFormik } from 'formik';
-import login_validate from '../lib/validate';
+import { login_validate } from '../lib/validate';
 
 const Login = () => {
 
@@ -62,7 +62,8 @@ const Login = () => {
                 className='flex flex-col gap-2 mt-5'>
                     <div className='flex justify-center'>
                         <input
-                        className='border-b-[1px] border-b-gray-400 text-gray-700'
+                        className={`border-b-[2px] border-b-gray-400 text-gray-700 
+                        ${formik.errors.email ? 'border-b-rose-600' : ''}`}
                         id="email"
                         type="email"
                         name="email"
@@ -74,14 +75,10 @@ const Login = () => {
                         className="text-gray-400 -ml-6 mt-1"
                         />
                     </div>
-                    {formik.errors.email && formik.touched.email ? 
-                    <span 
-                        className='text-xs text-rose-500'>
-                            {formik.errors.email}
-                    </span> : <></>}
                     <div className='flex justify-center'>
                         <input
-                        className='border-b-[1px] border-b-gray-400 text-gray-700'
+                        className={`border-b-[2px] border-b-gray-400 text-gray-700 
+                        ${formik.errors.password ? 'border-b-rose-600' : ''}`}
                         type={`${show ? "text" : "password"}`}
                         id="password"
                         name="password"
@@ -94,12 +91,6 @@ const Login = () => {
                         className="text-gray-400 -ml-6 mt-1"
                         />
                     </div>
-                    {formik.errors.password && formik.touched.password ? 
-                    <span 
-                        className='text-xs text-rose-500'
-                    >
-                        {formik.errors.password}
-                    </span> : <></>}
                     <div className='flex flex-col gap-2 mt-2'>
                         <button 
                         type='submit'
