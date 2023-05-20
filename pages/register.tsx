@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from 'react-icons/hi2';
 
 import { useFormik } from 'formik';
+import { register_validate } from '../lib/validate';
 
 const Register = () => {
     const [show, setShow] = useState({password: false, cpassword: false});
@@ -16,6 +17,7 @@ const Register = () => {
             password: '',
             cpassword: '',
         },
+        validate: register_validate,
         onSubmit
     })
 
@@ -49,6 +51,11 @@ const Register = () => {
                         className="text-gray-400 -ml-6 mt-1"
                         />
                     </div>
+                    {formik.errors.username && formik.touched.username ? 
+                    <span 
+                        className='text-xs text-rose-500'>
+                            {formik.errors.username}
+                    </span> : <></>}
                     <div className='flex justify-center'>
                         <input
                         className='border-b-[1px] border-b-gray-400 text-gray-700'
@@ -62,6 +69,11 @@ const Register = () => {
                         className="text-gray-400 -ml-6 mt-1"
                         />
                     </div>
+                    {formik.errors.email && formik.touched.email ? 
+                    <span 
+                        className='text-xs text-rose-500'>
+                            {formik.errors.email}
+                    </span> : <></>}
                     <div className='flex justify-center'>
                         <input
                         className='border-b-[1px] border-b-gray-400 text-gray-700'
@@ -76,6 +88,12 @@ const Register = () => {
                         className="text-gray-400 -ml-6 mt-1"
                         />
                     </div>
+                    {formik.errors.password && formik.touched.password ? 
+                    <span 
+                        className='text-xs text-rose-500'
+                    >
+                        {formik.errors.password}
+                    </span> : <></>}
                     <div className='flex justify-center'>
                         <input
                         className='border-b-[1px] border-b-gray-400 text-gray-700'
@@ -90,6 +108,12 @@ const Register = () => {
                         className="text-gray-400 -ml-6 mt-1"
                         />
                     </div>
+                    {formik.errors.cpassword && formik.touched.cpassword ? 
+                    <span 
+                        className='text-xs text-rose-500'
+                    >
+                        {formik.errors.cpassword}
+                    </span> : <></>}
                     <div className='flex flex-col gap-2 mt-2'>
                         <button className='bg-green-600 text-white 
                         font-semibold text-center mx-12 rounded-md py-1
