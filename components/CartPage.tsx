@@ -6,6 +6,7 @@ import { StoreProduct } from '../type';
 import default_product from '../assets/icons/default_product.png';
 import { isTemplateMiddle } from 'typescript';
 import { novalogo, novaCar } from '../assets/images/index';
+import { useSession } from "next-auth/react";
 
 import { IoMdClose } from "react-icons/md";
 
@@ -14,6 +15,7 @@ import { MdOutlineAdd } from 'react-icons/md';
 import FormatePrice from './FormatePrice';
 
 const CartPage = () => {
+    const { data: session } = useSession();
     const dispatch = useDispatch()
     const productData = useSelector((state: any) => state.buyer.productData);
     //prices
@@ -179,9 +181,12 @@ const CartPage = () => {
                     >
                         Оформити замовлення
                     </button>
-                    <p className='text-sm text-center text-red-500 font-semibold'>
-                        Будь ласка зареєструйтесь для оформлення замовлення
-                    </p>
+                    {!session && (
+                        <p className='text-sm text-center text-red-500 font-semibold'>
+                            Будь ласка зареєструйтесь для оформлення замовлення
+                        </p>
+                        )               
+                    }   
                 </div>
                 {/* checkout price */}
                 <div className='w-full flex flex-col gap-4 border-b-[1px] border-b-zinc-200 pb-4'>

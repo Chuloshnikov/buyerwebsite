@@ -10,7 +10,7 @@ import { AiOutlinePhone, AiOutlineClose } from 'react-icons/ai';
 import { BsTelegram, BsWhatsapp } from 'react-icons/bs';
 import { FaUserAlt } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const productData = useSelector((state:any) => state.buyer.productData);
