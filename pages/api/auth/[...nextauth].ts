@@ -3,24 +3,18 @@ import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 import InstagramProvider from "next-auth/providers/instagram";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { createUser } from '../../../lib/createUser';
 
 import dbConnect from "../../../lib/dbConnect";
 import User from "../../../models/User";
 import { compare } from "bcryptjs";
-import clientPromise from "../../../lib/clientPromise";
 
 export default NextAuth({
     providers: [
         GoogleProvider({
           clientId: process.env.GOOGLE_CLIENT_ID,
           clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-          authorization: {
-            params: {
-              prompt: "consent",
-              access_type: "offline",
-              response_type: "code"
-            }
-          }
+          profileFields: ['name', 'email'], 
         }),
         FacebookProvider({
           clientId: process.env.FACEBOOK_CLIENT_ID,
@@ -49,8 +43,29 @@ export default NextAuth({
               throw new Error("Username or Password does't match")
             }
 
+
             return result;
           }
         })
-    ]
+    ],
+    callbacks: {
+      async signIn(user, account, profile) {
+        // Обробник викликається при успішному вході в систему
+        // Тут ви можете зберегти дані користувача у базі даних
+        const currentDate = new Date();
+        
+        const userData = {
+          // Ви можете вибрати, які дані зберегти
+          name: user.user.name,
+          email: user.user.email,
+          createdAt: currentDate,
+
+          // Інші поля, які ви хочете зберегти
+        };
+  
+        await createUser(userData);
+  
+        return true; // Повертає true, щоб дозволити вхід в систему
+      },
+    },
 })

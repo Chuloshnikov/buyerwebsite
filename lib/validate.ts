@@ -1,5 +1,3 @@
-import { MdPassword } from "react-icons/md";
-
 export function login_validate(values) {
     const errors = {
 
@@ -29,12 +27,12 @@ export function login_validate(values) {
 export function register_validate(values) {
     const errors = {};
 
-    //username validation
+    //name validation
 
-    if (!values.username) {
-        errors.username = "Required";
-    } else if (values.username.includes(" ")){
-        errors.username = "Invalid Username...!"
+    if (!values.name) {
+        errors.name = "Required";
+    } else if (values.name.includes("")){
+        errors.name = "Invalid Name...!"
     }
 
     //email validation
