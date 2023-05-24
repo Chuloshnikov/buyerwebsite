@@ -3,7 +3,7 @@ import User from "../../../models/User";
 import { hash } from "bcryptjs";
 
 type Data = {
-    username: string; 
+    name: string; 
     email: string;
     password: string;
 }[];
@@ -18,7 +18,7 @@ export default async function handler(
     if(req.method === 'POST') {
 
         if(!req.body) return res.status(404).json({ error: "Don't have form data...!"});
-        const { username, email, password } = req.body;
+        const { name, email, password } = req.body;
 
         //check duplicate user
         const checkexisting = await User.findOne({ email });
@@ -26,7 +26,7 @@ export default async function handler(
 
         //hash password
 
-        const newUser = await User.create({username, email, password : await hash(password, 12)});
+        const newUser = await User.create({name, email, password : await hash(password, 12)});
         res.status(201).json(newUser)
         
 

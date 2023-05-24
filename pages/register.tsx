@@ -7,7 +7,6 @@ import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from 'react-icons/hi2';
 
 import { useFormik } from 'formik';
 import { register_validate } from '../lib/validate';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 
 const Register = () => {
@@ -15,7 +14,7 @@ const Register = () => {
     const [show, setShow] = useState({password: false, cpassword: false});
     const formik = useFormik({
         initialValues: {
-            username: '',
+            name: '',
             email: '',
             password: '',
             cpassword: '',
@@ -54,11 +53,11 @@ const Register = () => {
                 <div className='flex justify-center'>
                         <input
                         className={`border-b-[2px] border-b-gray-400 text-gray-700 
-                        ${formik.errors.username ? 'border-b-rose-600' : ''}`}
+                        ${formik.errors.name ? 'border-b-rose-600' : ''}`}
                         type="text"
-                        name="Username"
-                        placeholder='Username'
-                        {...formik.getFieldProps('username')}
+                        name="name"
+                        placeholder='Name'
+                        {...formik.getFieldProps('name')}
                         />
                         <HiOutlineUser
                         size={20} 
