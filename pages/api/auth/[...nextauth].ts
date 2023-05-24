@@ -53,6 +53,12 @@ export default NextAuth({
         // Обробник викликається при успішному вході в систему
         // Тут ви можете зберегти дані користувача у базі даних
         const currentDate = new Date();
+
+         // Перевірка існування користувача перед створенням нового запису
+        const existingUser = await User.findOne({ email: user.email });
+        if (existingUser) {
+        throw new Error("User already exists"); // Кидаємо помилку, якщо користувач вже існує
+        }
         
         const userData = {
           // Ви можете вибрати, які дані зберегти
