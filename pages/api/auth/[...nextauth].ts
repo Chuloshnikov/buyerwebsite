@@ -57,19 +57,21 @@ export default NextAuth({
          // Перевірка існування користувача перед створенням нового запису
         const existingUser = await User.findOne({ email: user.user.email });
         if (existingUser) {
-        throw new Error("User already exists"); // Кидаємо помилку, якщо користувач вже існує
+        return true;
+        } else if (!existingUser) {
+          const userData = {
+            // Ви можете вибрати, які дані зберегти
+            name: user.user.name,
+            email: user.user.email,
+            createdAt: currentDate,
+  
+            // Інші поля, які ви хочете зберегти
+          };
+    
+          await createUser(userData);
         }
         
-        const userData = {
-          // Ви можете вибрати, які дані зберегти
-          name: user.user.name,
-          email: user.user.email,
-          createdAt: currentDate,
-
-          // Інші поля, які ви хочете зберегти
-        };
-  
-        await createUser(userData);
+        
   
         return true; // Повертає true, щоб дозволити вхід в систему
       },
