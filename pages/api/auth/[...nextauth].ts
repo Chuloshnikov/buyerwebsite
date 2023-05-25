@@ -55,7 +55,7 @@ export default NextAuth({
         const currentDate = new Date();
 
          // Перевірка існування користувача перед створенням нового запису
-        const existingUser = await User.findOne({ email: user.email });
+        const existingUser = await User.findOne({ email: user.user.email });
         if (existingUser) {
         throw new Error("User already exists"); // Кидаємо помилку, якщо користувач вже існує
         }
