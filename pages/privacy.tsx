@@ -1,5 +1,4 @@
 
-
 const Privacy = () => {
   return (
         <div className="text-gray-800 my-12 mx-12 flex flex-col gap-4 text-sm font-normal">
