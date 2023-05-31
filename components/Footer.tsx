@@ -35,7 +35,7 @@ const Footer = () => {
                 <p className='text-white xs:hidden mdl:block'>Anastasiia</p>
             </div>
             <div className='flex items-center gap-2 text-xs '>
-                <Link href="/about_us" className='hover:scale-105 hover:underline duration-300'>Про послуги</Link>
+                <Link href="/about" className='hover:scale-105 hover:underline duration-300'>Про послуги</Link>
                 <div>|</div>
                 <Link href="/legal_terms" className='hover:scale-105 hover:underline duration-300'>Умови використання сайту</Link>
                 <div>|</div>

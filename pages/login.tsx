@@ -59,7 +59,7 @@ const Login = () => {
   return (
         <CredentialsForm>
             <Head>
-                <title>Log in</title>
+                <title>Увійти</title>
                 <meta name="Баєр Анастасія" content="Tвій найкращий баєр" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/buyerfavicon.ico" />

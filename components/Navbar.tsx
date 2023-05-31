@@ -93,14 +93,14 @@ const Navbar = () => {
                        onClick={() => signOut()}
                        className='text-green-700 flex flex-col items-center'>
                           <FaUserAlt className='text-[24px]'/>
-                          <span className='font-medium text-xs xs:hidden mdl:inline'>Log out</span>
+                          <span className='font-medium text-xs xs:hidden mdl:inline'>Вийти</span>
                       </button>
                         ) : (
                           <Link
                           href={'/login'}
                           className='text-red-500 flex flex-col items-center'>
                             <FaUserAlt className='text-[24px]'/>
-                            <span className='font-medium text-xs xs:hidden mdl:inline'>Log in</span>
+                            <span className='font-medium text-xs xs:hidden mdl:inline'>Увійти</span>
                           </Link>
                         )
                         } 
@@ -133,7 +133,7 @@ const Navbar = () => {
                     <nav className='p-10'>
                       <ul className='flex flex-col gap-3'>
                         <li onClick={toogleMenu}><Link href="/products">Каталог</Link></li>
-                        <li onClick={toogleMenu}>апвппапп</li>
+                        <li onClick={toogleMenu}><Link href="/about">Про послуги</Link></li>
                         <li onClick={toogleMenu}>dfgdfgfg</li>
                         <li onClick={toogleMenu}>dfgdfg</li>
                         {!session && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
