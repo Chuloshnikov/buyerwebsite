@@ -46,7 +46,6 @@ const Register = () => {
                 <link rel="icon" href="/buyerfavicon.ico" />
             </Head>
             <section className='mx-auto flex flex-col'>
-            <h1>Регістрація</h1>
                 <form 
                 onSubmit={formik.handleSubmit}
                 className='flex flex-col gap-2 mt-5'>
@@ -113,13 +112,23 @@ const Register = () => {
                         font-semibold text-center mx-12 rounded-md py-1
                         hover:scale-105 duration-300'
                         >
-                            Реєстрація
+                            Регістрація
                         </button>
                     </div>
                 </form>
-                <p className='mt-10 text-xs font-semibold text-center text-gray-400'>
+                <p className='text-xs font-medium mt-4 mx-4 text-gray-400'>
+                    Реєструючись, ви погоджуєтеся з умовами{' '}
+                     <Link className='text-blue-400 hover:text-red-400 duration-300' href="/privacy">
+                        положення про обробку і захист персональних даних
+                    </Link>
+                       {' '}та{' '}
+                     <Link className='text-blue-400 hover:text-red-400 duration-300' href="/legal_terms">
+                        угодою користувача
+                        </Link>
+                </p>
+                <p className='mt-4 text-xs font-semibold text-center text-gray-400'>
                     Ви вже зареэструвались?{' '}
-                    <Link className='text-blue-600 hover:underline duration-200' href={'/login'}>
+                    <Link className='text-blue-400 hover:text-red-400 duration-300' href={'/login'}>
                         Логін
                     </Link>
                 </p>

@@ -65,7 +65,6 @@ const Login = () => {
                 <link rel="icon" href="/buyerfavicon.ico" />
             </Head>
             <section className='mx-auto flex flex-col'>
-                <h1>Логін</h1>
                 <form 
                 onSubmit={formik.handleSubmit}
                 className='flex flex-col gap-2 mt-5'>
@@ -142,7 +141,7 @@ const Login = () => {
                     </div>
                 <p className='mt-10 text-xs font-semibold text-center text-gray-400'>
                     Ви ще не зареєструвались?{' '}
-                    <Link className='text-blue-600 hover:underline duration-200' href={'/register'}>
+                    <Link className='text-blue-400 hover:text-red-400 duration-300' href={'/register'}>
                         Реєстрація
                     </Link>
                 </p>
