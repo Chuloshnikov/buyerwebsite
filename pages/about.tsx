@@ -13,7 +13,7 @@ const About = () => {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/buyerfavicon.ico" />
         </Head>
-        <main>
+        <main className='flex flex-col gap-16 mt-8'>
             <AboutHelloSection/>
             <AboutInfoSection/>
         </main>
