@@ -22,7 +22,7 @@ const AboutInfoSection = () => {
     visible1: {
       x: '0%',
       opacity: 1,
-      transition: { duration: 0.2, ease: "easeInOut", delay: 0.3 }
+      transition: { duration: 0.3, ease: "easeInOut", delay: 0.3 }
     }
   };
 
@@ -40,7 +40,7 @@ const AboutInfoSection = () => {
     visible3: {
       x: '0%',
       opacity: 1,
-      transition: { duration: 0.2, ease: "easeInOut", delay: 0.9 }
+      transition: { duration: 0.1, ease: "easeInOut", delay: 0.9 }
     }
   };
 
