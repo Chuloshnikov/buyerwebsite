@@ -2,7 +2,11 @@ import React from 'react';
 
 const AboutAvailableSection = () => {
   return (
-    <div>AboutAvailableSection</div>
+    <div>
+        <div>
+          asdd
+        </div>
+    </div>
   )
 }
 
