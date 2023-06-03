@@ -1,11 +1,12 @@
 
 import React from 'react';
 import Head from 'next/head';
-import AboutHelloSection from '../components/AboutHelloSection';
-import AboutInfoSection from '../components/AboutInfoSection';
-import AboutOrderingSection from '../components/AboutOrderingSection';
-import AboutAvailableSection from '../components/AboutAvailableSection';
-import AboutPaymentSection from '../components/AboutPaymentSection';
+import AboutHelloSection from '../components/aboutSections/AboutHelloSection';
+import AboutInfoSection from '../components/aboutSections/AboutInfoSection';
+import AboutOrderingSection from '../components/aboutSections/AboutOrderingSection';
+import AboutAvailableSection from '../components/aboutSections/AboutAvailableSection';
+import AboutPaymentSection from '../components/aboutSections/AboutPaymentSection';
+import AboutClosedChannelSection from '../components/aboutSections/AboutClosedChannelSection';
 
 const About = () => {
   return (
@@ -16,12 +17,13 @@ const About = () => {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/buyerfavicon.ico" />
         </Head>
-        <main className='flex flex-col gap-16 mt-8'>
+        <main className='flex flex-col gap-16 mt-8 mb-8'>
             <AboutHelloSection/>
             <AboutInfoSection/>
             <AboutOrderingSection/>
             <AboutAvailableSection/>
             <AboutPaymentSection/>
+            <AboutClosedChannelSection/>
         </main>
     </>
     
