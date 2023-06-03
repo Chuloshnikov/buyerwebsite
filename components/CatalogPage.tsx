@@ -48,14 +48,14 @@ const CatalogPage = ({ productData }: Props) => {
                     })) && toast.success(`${item.title.substring(0,20)} додано у кошик`)
                   }
                     className=' p-2 rounded-lg bg-orange-400 flex items-center justify-center gap-1
-                    hover:scale-105 hover:bg-orange-500 duration-300'
+                    hover:bg-orange-500 duration-300'
                     >
                       <span><GoPlus/></span>
                       У кошик
                     </button>
                     <Link href={`products/product/${item._id}`}>
                         <button className='p-2 rounded-lg bg-orange-400 flex items-center justify-center
-                          hover:scale-105 hover:bg-orange-500 duration-300'
+                        hover:bg-orange-500 duration-300'
                         >
                           Детальніше
                         </button>

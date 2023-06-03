@@ -107,15 +107,15 @@ const AboutOrderingSection = () => {
               </p>
               <ul className='text-sm font-semibold leading-5'>
                 <li className='flex gap-1 items-center'>
-                  <span className='bg-orange-500 h-[10px] w-[10px]'></span>
+                  <span className='bg-orange-500 h-[10px] w-[10px] mt-1'></span>
                   <span>фото товару</span>
                 </li>
                 <li className='flex gap-1 items-center'>
-                  <span className='bg-orange-500 h-[10px] w-[10px]'></span>
+                  <span className='bg-orange-500 h-[10px] w-[10px] mt-1'></span>
                   <span>перевірка товару</span>
                 </li>
                 <li className='flex gap-1 items-center'>
-                  <span className='bg-orange-500 h-[10px] w-[10px]'></span>
+                  <span className='bg-orange-500 h-[10px] w-[10px] mt-1'></span>
                   <span>додаткове пакування</span>
                 </li>
               </ul>

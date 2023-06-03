@@ -165,7 +165,7 @@ const CartPage = () => {
                     <button 
                     onClick={() => dispatch(resetCart())}
                     className='w-44 bg-red-500 text-white h-10 rounded-md text-base 
-                    font-semibold hover:bg-red-800 hover:scale-105 duration-300'
+                    font-semibold hover:bg-red-800 duration-300'
                     >
                         Видалити все
                     </button>
@@ -176,7 +176,7 @@ const CartPage = () => {
                 <div>
                     <button
                     className='bg-green-600 hover:bg-green-700 
-                    hover:scale-105 w-full text-white h-10 rounded-md 
+                    w-full text-white h-10 rounded-md 
                     font-semibold duration-300'
                     >
                         Оформити замовлення

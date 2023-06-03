@@ -85,7 +85,7 @@ const ProductDetails = () => {
                 })) && toast.success(`${product.title.substring(0,20)} додано у кошик`)
               }
                 className='xs:flex md:hidden items-center gap-1 py-3 px-2 bg-orange-400 text-white rounded-md 
-                hover:scale-105 hover:bg-orange-500 duration-300'
+                hover:bg-orange-500 duration-300'
                 >
                   <span><GoPlus/></span>
                     Додати у кошик
@@ -133,7 +133,7 @@ const ProductDetails = () => {
                 })) && toast.success(`${product.title.substring(0,20)} додано у кошик`)
               }
                 className='xs:hidden mdl:flex items-center gap-1 py-3 px-2 bg-orange-400 text-white rounded-md 
-                hover:scale-105 hover:bg-orange-500 duration-300'
+                hover:bg-orange-500 duration-300'
                 >
                   <span><GoPlus/></span>
                     Додати у кошик
