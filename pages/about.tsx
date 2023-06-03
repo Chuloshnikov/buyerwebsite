@@ -5,6 +5,7 @@ import AboutHelloSection from '../components/AboutHelloSection';
 import AboutInfoSection from '../components/AboutInfoSection';
 import AboutOrderingSection from '../components/AboutOrderingSection';
 import AboutAvailableSection from '../components/AboutAvailableSection';
+import AboutPaymentSection from '../components/AboutPaymentSection';
 
 const About = () => {
   return (
@@ -20,6 +21,7 @@ const About = () => {
             <AboutInfoSection/>
             <AboutOrderingSection/>
             <AboutAvailableSection/>
+            <AboutPaymentSection/>
         </main>
     </>
     
