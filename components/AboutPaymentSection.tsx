@@ -4,7 +4,7 @@ import { BsFillBoxSeamFill } from "react-icons/bs";
 import { FaCalendarCheck, FaHandshake, FaSuitcase } from "react-icons/fa";
 import { motion, useAnimation } from 'framer-motion';
 import { MdPayment, MdOutlinePayments,  } from "react-icons/md";
-import { BiSolidCreditCardAlt } from "react-icons";
+import { BsFillCreditCardFill } from "react-icons/bs";
 
 const AboutPaymentSection = () => {
   const controls = useAnimation();
@@ -108,10 +108,10 @@ const AboutPaymentSection = () => {
           ref={ref}
         >
           <div className='flex gap-2 justify-center'>
-            <MdOutlinePayments className='w-8 h-8' />
+            <BsFillCreditCardFill className='w-8 h-8' />
           </div>
-          <span>Працюю як фоп</span>
-          <span>Сплачую податки</span>
+          <span>Є зручна можливість оформити оплату частинами</span>
+          
         </motion.div>
       </div>
     </>
