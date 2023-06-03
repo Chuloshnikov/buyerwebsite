@@ -2,12 +2,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import availableBox from '../assets/icons/availableBox.svg';
-import basketImg from "../assets/icons/basketImg.svg";
+import quietImg from '../../assets/icons/quiet.svg';
+import telegramImg from "../../assets/icons/Telegram.svg";
+import instagramLogo from "../../assets/icons/InstagramLogo.svg";
 import { motion } from 'framer-motion';
 
 
-const AboutAvailableSection = () => {
+const AboutClosedChannelSection = () => {
   const leftColumnRef = useRef(null);
   const rightColumnRef = useRef(null);
   const [leftColumnVisible, setLeftColumnVisible] = useState(false);
@@ -73,24 +74,7 @@ const AboutAvailableSection = () => {
           initial="hidden"
           animate={leftColumnVisible ? "visible" : "hidden"}
           className='container'>
-            <div className='w-[300px] mt-10'>
-                <div>
-                      <Image src={availableBox} width={150} className="absolute mt-5 ml-20 opacity-10"/>
-                  </div>
-                  <div className='w-full flex flex-col gap-10 mt-5'>
-                    <div className='flex flex-col gap-4 leading-5 text-lg font-semibold'>
-                      <p>Tовари в наявності можуть бути у вас вже через один чи два робочих дні.</p>
-                      <p>Відправка відбувається у день оплати або на наступний робочий день.</p>
-                    </div>
-                    <Link 
-                        className='bg-orange-400 text-white font-semibold
-                        rounded-lg w-full block py-2 hover:bg-orange-500 duration-300 text-center items-center'
-                        href="/products"
-                        >
-                          Товари в наявності
-                    </Link>
-                  </div>
-            </div>
+            <Image src={telegramImg} width={200}/>
           </motion.div>
           <motion.div
           className='container'
@@ -99,11 +83,27 @@ const AboutAvailableSection = () => {
           initial="hidden"
           animate={rightColumnVisible ? "visible" : "hidden"}
           >
-              <Image src={basketImg} width={200}/>
+              <div className='w-[300px]'>
+                <div>
+                      <Image src={quietImg} width={100} className="absolute  ml-20 opacity-10"/>
+                  </div>
+                  <div className='w-full flex flex-col gap-6 mt-5 items-center'>
+                    <div className='flex flex-col gap-2 leading-5 text-base font-semibold'>
+                      <p>Закритий Телеграм канал з ранніми доступами до розпродажів</p>
+                      <p>Щоб потрапити до каналу пиши у дірект Instagram сторінки:</p>
+                    </div>
+                    <Link 
+                        className='-ml-12'
+                        href="https://www.instagram.com/anastasia_zahorodnia_work/"
+                        >
+                          <Image src={instagramLogo} width={50} height={50}/>
+                    </Link>
+                  </div>
+            </div>
           </motion.div>
         </div>
     </>
   )
 }
 
-export default AboutAvailableSection;
+export default AboutClosedChannelSection;

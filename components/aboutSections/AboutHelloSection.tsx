@@ -1,10 +1,10 @@
 "use client"
 import React from 'react';
 import Image from 'next/image';
-import logo from "../assets/images/logo.png";
-import usaFlag from "../assets/icons/usa.svg";
-import euFlag from "../assets/icons/Europe.svg";
-import planet from "../assets/icons/planet.svg";
+import logo from "../../assets/images/logo.png";
+import usaFlag from "../../assets/icons/usa.svg";
+import euFlag from "../../assets/icons/Europe.svg";
+import planet from "../../assets/icons/planet.svg";
 import { motion } from 'framer-motion';
 
 const AboutHelloSection = () => {

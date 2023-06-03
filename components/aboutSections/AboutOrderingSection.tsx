@@ -2,8 +2,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import plane from "../assets/icons/plane.svg";
-import box from "../assets/icons/box.svg";
+import plane from "../../assets/icons/plane.svg";
+import box from "../../assets/icons/box.svg";
 import { motion } from 'framer-motion';
 
 const AboutOrderingSection = () => {
