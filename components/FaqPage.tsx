@@ -210,21 +210,6 @@ const FaqPage = () => {
             <AccordionItem>
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                        Якщо товар був втрачений до приїзду в Україну. 
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                    <p>
-                        У випадку, якщо замовлення було втрачене до моменту відправки Вам новою  
-                        поштою (окрім ситуацій які не підлягають моєму контролю, такі як війна, 
-                        стихійне лихо..) - ми вирішуємо це питання особисто, якщо можливо 
-                        перезамовити - я перезамовляю, якщо ні - я повертаю повну суму замовлення Вам на картку.       
-                    </p>
-                </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem>
-                <AccordionItemHeading>
-                    <AccordionItemButton>
                         Податки та мито при проходженні товару митницею. 
                     </AccordionItemButton>
                 </AccordionItemHeading>
