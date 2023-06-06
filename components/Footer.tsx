@@ -34,13 +34,23 @@ const Footer = () => {
                 </Link>
                 <p className='text-white xs:hidden mdl:block'>Anastasiia</p>
             </div>
-            <div className='xs:hidden lg:flex items-center gap-2 text-xs'>
-                <Link href="/about" className='hover:scale-105 hover:underline duration-300'>Про послуги</Link>
-                <div>|</div>
-                <Link href="/legal_terms" className='hover:scale-105 hover:underline duration-300'>Умови використання сайту</Link>
-                <div>|</div>
-                <Link href="/faq" className='hover:scale-105 hover:underline duration-300'>Запитання та FAQ</Link>
-            </div>
+            <ol className='xs:hidden lg:flex items-center gap-2 text-xs'>
+                <li>
+                  <Link href="/about" passHref className='hover:scale-105 hover:underline duration-300'>Про послуги</Link>
+                </li>
+                <li>
+                  <div>|</div>
+                </li>
+                <li>
+                  <Link href="/legal_terms" passHref className='hover:scale-105 hover:underline duration-300'>Умови використання сайту</Link>
+                </li>
+                <li>
+                  <div>|</div>
+                </li>
+                <li>
+                  <Link href="/faq" passHref className='hover:scale-105 hover:underline duration-300'>Запитання та FAQ</Link>
+                </li>
+            </ol>
         </div>
         <div className='flex items-center gap-2 xs:hidden sm:flex'>
           <RiVisaLine className='w-20 h-20'/>

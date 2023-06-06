@@ -14,12 +14,14 @@ const AboutOrderingSection = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (
+        leftColumnRef.current &&
         leftColumnRef.current.getBoundingClientRect().top <= window.innerHeight &&
         leftColumnRef.current.getBoundingClientRect().bottom >= 0
       ) {
         setLeftColumnVisible(true);
       }
       if (
+        rightColumnRef.current &&
         rightColumnRef.current.getBoundingClientRect().top <= window.innerHeight &&
         rightColumnRef.current.getBoundingClientRect().bottom >= 0
       ) {

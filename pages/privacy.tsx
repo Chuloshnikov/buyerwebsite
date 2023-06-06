@@ -2,9 +2,9 @@ import PrivacyPage from "../components/PrivacyPage";
 
 const Privacy = () => {
   return (
-    <>
-    <PrivacyPage/>
-    </>
+    <div className='max-w-contentContainer m-auto'>
+      <PrivacyPage/>
+    </div>
   )
 }
 
