@@ -34,12 +34,12 @@ const Footer = () => {
                 </Link>
                 <p className='text-white xs:hidden mdl:block'>Anastasiia</p>
             </div>
-            <div className='flex items-center gap-2 text-xs '>
+            <div className='xs:hidden lg:flex items-center gap-2 text-xs'>
                 <Link href="/about" className='hover:scale-105 hover:underline duration-300'>Про послуги</Link>
                 <div>|</div>
                 <Link href="/legal_terms" className='hover:scale-105 hover:underline duration-300'>Умови використання сайту</Link>
                 <div>|</div>
-                <Link href="/" className='hover:scale-105 hover:underline duration-300'>Щось ще</Link>
+                <Link href="/faq" className='hover:scale-105 hover:underline duration-300'>Запитання та FAQ</Link>
             </div>
         </div>
         <div className='flex items-center gap-2 xs:hidden sm:flex'>
