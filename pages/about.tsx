@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Head from 'next/head';
 import AboutHelloSection from '../components/aboutSections/AboutHelloSection';
 import AboutInfoSection from '../components/aboutSections/AboutInfoSection';
@@ -9,6 +9,8 @@ import AboutPaymentSection from '../components/aboutSections/AboutPaymentSection
 import AboutClosedChannelSection from '../components/aboutSections/AboutClosedChannelSection';
 
 const About = () => {
+  const ref = useRef(null);
+
   return (
     <>
         <Head>
@@ -22,7 +24,7 @@ const About = () => {
             <AboutInfoSection/>
             <AboutOrderingSection/>
             <AboutAvailableSection/>
-            <AboutPaymentSection/>
+            <AboutPaymentSection refProp={ref} />
             <AboutClosedChannelSection/>
         </main>
     </>
