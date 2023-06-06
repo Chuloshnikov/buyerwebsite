@@ -9,17 +9,18 @@ import { BiMenu, BiMenuAltRight } from 'react-icons/bi';
 import { AiOutlinePhone, AiOutlineClose } from 'react-icons/ai';
 import { BsTelegram, BsWhatsapp } from 'react-icons/bs';
 import { FaUserAlt } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
-import { useSession, signOut } from "next-auth/react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useSession, signOut, SessionContext } from "next-auth/react";
+import { addUser, removeUser } from '../redux/buyerSlice';
 
 const Navbar = () => {
-  const productData = useSelector((state:any) => state.buyer.productData);
-  console.log(productData);
+  const dispatch = useDispatch();
+  const productData = useSelector((state: any) => state.buyer.productData);
+  const userInfo = useSelector((state: any) => state.buyer.userInfo);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMessagePanel, setOpenMessagePanel] = useState(false);
   const menuRef = useRef(null);
   const { data: session } = useSession();
-  console.log(session)
 
 
   const toogleMenu = () => {
@@ -29,6 +30,19 @@ const Navbar = () => {
   const toogleMessagePanel = () => {
     setOpenMessagePanel(!openMessagePanel);
   }
+
+  useEffect(() => {
+    if(session) {
+      dispatch(
+        addUser({
+        name: session.user?.name,
+        email: session.user?.email,
+        image: session.user?.image,
+      }))
+    } else {
+      dispatch(removeUser())
+    }
+  }, [session, dispatch]);
 
   useEffect(() => {
     const handleDocumentClick = (e) => {
@@ -88,7 +102,7 @@ const Navbar = () => {
                 <div className='felx flex-col gap-1'>
                   <button>
                       {/*login button*/}
-                       {session ? (
+                       {userInfo ? (
                        <button
                        onClick={() => signOut()}
                        className='text-green-700 flex flex-col items-center'>
@@ -136,8 +150,8 @@ const Navbar = () => {
                         <li onClick={toogleMenu}><Link href="/about">Про послуги</Link></li>
                         <li onClick={toogleMenu}>dfgdfgfg</li>
                         <li onClick={toogleMenu}><Link href="/faq">FAQ</Link></li>
-                        {!session && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
-                        {session && (<li onClick={toogleMenu}><Link href="/profile">Мій профіль</Link></li>)}
+                        {!userInfo && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
+                        {userInfo && (<li onClick={toogleMenu}><Link href="/profile">Мій профіль</Link></li>)}
                         {
                         session && (
                         <li onClick={toogleMenu}>
