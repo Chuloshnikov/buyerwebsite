@@ -18,6 +18,7 @@ const CartPage = () => {
     const { data: session } = useSession();
     const dispatch = useDispatch()
     const productData = useSelector((state: any) => state.buyer.productData);
+    const userInfo = useSelector((state: any) => state.buyer.userInfo);
     //prices
     const [totalOldPrice, setTotalOldPrice] = useState();
     const [totalSavings, setTotalSavings] = useState();
@@ -31,6 +32,13 @@ const CartPage = () => {
         });
         setTotalAmt(amt);
     }, [productData]);
+
+    const handleCheckout = () => {
+        console.log(productData);
+        console.log(totalAmt);
+        console.log(userInfo);
+    }
+
   return (
     <div className='w-full py-10 px-5'>
         <div className='w-full flex xs:flex-col lg:flex-row gap-10'>
@@ -175,13 +183,14 @@ const CartPage = () => {
             >
                 <div>
                     <button
+                    onClick={handleCheckout}
                     className='bg-green-600 hover:bg-green-700 
                     w-full text-white h-10 rounded-md 
                     font-semibold duration-300'
                     >
                         Оформити замовлення
                     </button>
-                    {!session && (
+                    {!userInfo && (
                         <p className='text-sm text-center text-red-500 font-semibold'>
                             Будь ласка зареєструйтесь для оформлення замовлення
                         </p>
