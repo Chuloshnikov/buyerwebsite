@@ -1,19 +1,17 @@
 import React, { useEffect, useRef } from 'react';
-import { GiCommercialAirplane, GiEarthAmerica, GiPayMoney } from "react-icons/gi";
-import { BsFillBoxSeamFill } from "react-icons/bs";
-import { FaCalendarCheck, FaHandshake, FaSuitcase } from "react-icons/fa";
 import { motion, useAnimation } from 'framer-motion';
-import { MdPayment, MdOutlinePayments,  } from "react-icons/md";
+import { MdPayment, MdOutlinePayments } from "react-icons/md";
 import { BsFillCreditCardFill } from "react-icons/bs";
+import PropTypes from 'prop-types';
 
-const AboutPaymentSection = () => {
+const AboutPaymentSection = ({ refProp }) => {
   const controls = useAnimation();
-  const ref = useRef(null);
+
 
   useEffect(() => {
-    const element = ref.current;
+    const element = refProp.current;
     const onScroll = () => {
-      if (isElementInViewport(element)) {
+      if (isElementInViewport(refProp.current)) {
         const sequence = async () => {
           await controls.start("visible1");
           await controls.start("visible2");
@@ -46,7 +44,7 @@ const AboutPaymentSection = () => {
     visible1: {
       x: '0%',
       opacity: 1,
-      transition: { duration: 0.3, ease: "easeInOut", delay: 0.3 }
+      transition: { duration: 0.3, ease: "easeInOut", delay: 0.1 }
     }
   };
 
@@ -55,7 +53,7 @@ const AboutPaymentSection = () => {
     visible2: {
       x: '0%',
       opacity: 1,
-      transition: { duration: 0.2, ease: "easeInOut", delay: 0.6 }
+      transition: { duration: 0.2, ease: "easeInOut", delay: 0.2 }
     }
   };
 
@@ -64,7 +62,7 @@ const AboutPaymentSection = () => {
     visible3: {
       x: '0%',
       opacity: 1,
-      transition: { duration: 0.1, ease: "easeInOut", delay: 0.9 }
+      transition: { duration: 0.1, ease: "easeInOut", delay: 0.4 }
     }
   };
 
@@ -72,13 +70,12 @@ const AboutPaymentSection = () => {
     <>
       <div className='flex gap-4 text-center justify-center text-lg text-gray-800 font-semibold'>
         <motion.div
-          className="box"
           variants={column1}
           initial="hidden"
           animate={controls}
-          className={`flex flex-col gap-4 py-8 px-4 shadow-bannerShadow max-w-[200px] 
+          className={`box flex flex-col gap-4 py-8 px-4 shadow-bannerShadow max-w-[200px] 
           bg-orange-400 text-white hover:bg-white hover:text-gray-800 duration-300`}
-          ref={ref}
+          ref={refProp}
         >
           <div className='flex gap-2 justify-center'>
             <MdPayment className='w-10 h-10' />
@@ -86,13 +83,12 @@ const AboutPaymentSection = () => {
           <span>Оплачуй по повній предоплаті</span>
         </motion.div>
         <motion.div
-          className="box"
           variants={column2}
           initial="hidden"
           animate={controls}
-          className={`flex flex-col gap-4 py-8 px-4 shadow-bannerShadow max-w-[200px] 
+          className={`box flex flex-col gap-4 py-8 px-4 shadow-bannerShadow max-w-[200px] 
           bg-orange-400 text-white hover:bg-white hover:text-gray-800 duration-300`}
-          ref={ref}
+          ref={refProp}
         >
           <div className='flex gap-2 justify-center'>
             <MdOutlinePayments className='w-8 h-8' />
@@ -100,22 +96,24 @@ const AboutPaymentSection = () => {
           <span>Замовляй по частковій предоплаті</span>
         </motion.div>
         <motion.div
-          className="box"
           variants={column3}
           initial="hidden"
           animate={controls}
-          className={`flex flex-col gap-4 py-8 px-4 shadow-bannerShadow max-w-[200px] bg-orange-400 text-white hover:bg-white hover:text-gray-800 duration-300`}
-          ref={ref}
+          className={`box flex flex-col gap-4 py-8 px-4 shadow-bannerShadow max-w-[200px] bg-orange-400 text-white hover:bg-white hover:text-gray-800 duration-300`}
+          ref={refProp}
         >
           <div className='flex gap-2 justify-center'>
             <BsFillCreditCardFill className='w-8 h-8' />
           </div>
           <span>Є зручна можливість оформити оплату частинами</span>
-          
         </motion.div>
       </div>
     </>
   );
+};
+
+AboutPaymentSection.propTypes = {
+  refProp: PropTypes.object 
 };
 
 export default AboutPaymentSection;
