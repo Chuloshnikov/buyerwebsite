@@ -135,7 +135,7 @@ const Navbar = () => {
                         <li onClick={toogleMenu}><Link href="/products">Каталог</Link></li>
                         <li onClick={toogleMenu}><Link href="/about">Про послуги</Link></li>
                         <li onClick={toogleMenu}>dfgdfgfg</li>
-                        <li onClick={toogleMenu}>dfgdfg</li>
+                        <li onClick={toogleMenu}><Link href="/faq">FAQ</Link></li>
                         {!session && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
                         {session && (<li onClick={toogleMenu}><Link href="/profile">Мій профіль</Link></li>)}
                         {

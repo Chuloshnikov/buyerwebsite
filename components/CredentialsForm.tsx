@@ -1,7 +1,12 @@
 import Image from "next/image";
-import img from "../assets/icons/registerImg/4.gif"
+import img from "../assets/icons/registerImg/1.gif";
 
-const CredentialsForm = ({ children }) => {
+
+interface Props{
+  children: ReactElement,
+}
+
+const CredentialsForm = ({children}: Props) => {
 
   return (
     <div className='flex py-10'>
