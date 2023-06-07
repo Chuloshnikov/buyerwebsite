@@ -6,7 +6,7 @@ import { StoreProduct } from '../type';
 import default_product from '../assets/icons/default_product.png';
 import { novalogo, novaCar } from '../assets/images/index';
 import { useSession } from "next-auth/react";
-
+import toast, { Toaster } from 'react-hot-toast';
 
 import { HiMinusSmall } from 'react-icons/hi2';
 import { MdOutlineAdd } from 'react-icons/md';
@@ -33,9 +33,14 @@ const CartPage = () => {
     }, [productData]);
 
     const handleCheckout = () => {
-        console.log(productData);
-        console.log(totalAmt);
-        console.log(userInfo);
+        if (totalAmt) {
+            console.log(productData);
+            console.log(totalAmt);
+            console.log(userInfo);
+        } else {
+            toast.error("Для проведення оплати оберіть товар та додати його у кошик")
+        }
+        
     }
 
   return (
@@ -225,6 +230,17 @@ const CartPage = () => {
                 </div>
             </div>
         </div>
+        <Toaster
+      reverseOrder={false}
+      position="top-center"
+      toastOptions={{
+        style:{
+          borderRadius: "8px",
+          background: "#333",
+          color: "#fff",
+        }
+      }}
+      />
     </div>
   )
 }
