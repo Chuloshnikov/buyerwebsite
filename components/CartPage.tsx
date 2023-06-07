@@ -4,15 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetCart, deleteItem, minusQuantity, plusQuantity } from '../redux/buyerSlice';
 import { StoreProduct } from '../type';
 import default_product from '../assets/icons/default_product.png';
-import { isTemplateMiddle } from 'typescript';
 import { novalogo, novaCar } from '../assets/images/index';
 import { useSession } from "next-auth/react";
 
-import { IoMdClose } from "react-icons/md";
 
 import { HiMinusSmall } from 'react-icons/hi2';
 import { MdOutlineAdd } from 'react-icons/md';
 import FormatePrice from './FormatePrice';
+
 
 const CartPage = () => {
     const { data: session } = useSession();
@@ -220,8 +219,8 @@ const CartPage = () => {
                 </div>
                 <div>
                     <div className='bg-gray-200 w-full flex items-center justify-between rounded-md overflow-hidden'>
-                        <Image className='p-1' src={novalogo} width={80} height={80}/>
-                        <Image className='p-1' src={novaCar} width={100} height={100}/>
+                        <Image className='p-1' src={novalogo} width={80} height={80} alt="novalogo"/>
+                        <Image className='p-1' src={novaCar} width={100} height={100} alt="novacar"/>
                     </div>
                 </div>
             </div>

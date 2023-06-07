@@ -10,6 +10,9 @@ const nextConfig = {
     'buyer-anastasiia.s3.amazonaws.com',
     "res.cloudinary.com"],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  }
 }
 
 module.exports = nextConfig

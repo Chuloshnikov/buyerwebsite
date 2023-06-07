@@ -4,12 +4,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
-import {
-    slide1,
-    slide2,
-    slide3,
-    slide4,
-} from '../assets/images/index';
 import Link from 'next/link';
 
 import axios from "axios";

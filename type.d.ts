@@ -32,7 +32,7 @@ export interface StoreProduct {
     oldPrice: number;
     price: number;
     sizes: string;
-    img: [string];
+    images: [string];
     category: string;
     quantity: number;
 }
