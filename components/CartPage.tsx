@@ -7,6 +7,7 @@ import default_product from '../assets/icons/default_product.png';
 import { novalogo, novaCar } from '../assets/images/index';
 import { useSession } from "next-auth/react";
 import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/router';
 
 import { HiMinusSmall } from 'react-icons/hi2';
 import { MdOutlineAdd } from 'react-icons/md';
@@ -15,6 +16,7 @@ import FormatePrice from './FormatePrice';
 
 const CartPage = () => {
     const { data: session } = useSession();
+    const router = useRouter();
     const dispatch = useDispatch()
     const productData = useSelector((state: any) => state.buyer.productData);
     const userInfo = useSelector((state: any) => state.buyer.userInfo);
@@ -22,6 +24,7 @@ const CartPage = () => {
     const [totalOldPrice, setTotalOldPrice] = useState();
     const [totalSavings, setTotalSavings] = useState();
     const [totalAmt, setTotalAmt] = useState();
+
 
     useEffect(() => {
         let amt = 0;
@@ -34,9 +37,12 @@ const CartPage = () => {
 
     const handleCheckout = () => {
         if (totalAmt) {
-            console.log(productData);
-            console.log(totalAmt);
-            console.log(userInfo);
+            
+            console.log(productData, totalAmt, userInfo);
+            router.push({
+                pathname: "/payment",
+                query: { productData, totalAmt, userInfo },
+              });
         } else {
             toast.error("Для проведення оплати оберіть товар та додати його у кошик")
         }
