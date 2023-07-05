@@ -31,8 +31,14 @@ export function register_validate(values) {
 
     if (!values.name) {
         errors.name = "Required";
-    } else if (values.name.includes("")){
+    } else if (values.name.includes(" ")){
         errors.name = "Invalid Name...!"
+    } else if (values.name.length < 3 || values.name.length > 20) {
+        errors.name = "Name cannot be less than 3 characters and cannot be more than 20 characters..!"
+    } else if (!/^[a-zA-Z0-9]+$/.test(values.name)) {
+        errors.name = "The name can only contain upper and lower case letters..!"
+    } else if (values.name.trim() !== values.name) {
+        errors.name = "Remove special characters or spaces at the end and beginning..!"
     }
 
     //email validation

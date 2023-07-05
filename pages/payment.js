@@ -1,26 +1,30 @@
-import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { getSession, useSession } from 'next-auth/react';
+import PaymentPage from "../components/PaymentPage";
+import Head from 'next/head';
 
 export default function Payment() {
   const router = useRouter();
   
   const {
-    query: { productData, totalAmt, userInfo }
+    query: { totalAmt }
   } = router;
 
-  const props = {
-    productData, 
-    totalAmt, 
-    userInfo
-  }
+  
 
   return (
-    <div>
-      {props.totalAmt}
-      {props.productData}
-      {JSON.stringify(userInfo)}
-    </div>
+    <>
+      <Head>
+          <title>Оплата</title>
+          <meta name="Баєр Анастасія" content="Tвій найкращий баєр" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/buyerfavicon.ico" />
+      </Head>
+      <main>
+        <PaymentPage amount={totalAmt}/>
+      </main>
+    </>
+      
   )
 }
 
