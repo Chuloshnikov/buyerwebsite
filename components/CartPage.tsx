@@ -68,13 +68,15 @@ const CartPage = () => {
                                 border-b-[1px] border-b-zinc-200 pb-4"
                                 >
                                     <div className='w-3/4 flex xs:flex-col mdl:flex-row items-center gap-2'>
-                                        <Image 
-                                        className='w-32'
-                                        width={500}
-                                        height={500}
-                                        src={item.images ? item.images[0] : default_product}
-                                        alt="productImg"
-                                        />  
+                                        <div>
+                                            <Image 
+                                                src={item.images[0] ? item.images[0] : default_product} 
+                                                className='w-32'
+                                                width={500}
+                                                height={500}
+                                                alt="productImg"
+                                            /> 
+                                        </div>
                                         <div>
                                             <h2 className='text-base text-zinc-900'>
                                                 {item.title}
