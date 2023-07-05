@@ -50,7 +50,7 @@ const Banner = () => {
             <SwiperSlide key={banner._id}>
                 <img className='w-full xs:h-[320px] md:h-[410px] 
                 rounded-lg relative object-cover' 
-                src={banner.imageUrl} alt="sliderImg" priority
+                src={banner.imageUrl} alt="sliderImg" priority="true"
                 />
                 <div className='absolute w-60 h-full top-0 left-4 flex flex-col gap-3 text-white'>
                   <h1 className='text-2xl font-bold '>{banner.title}</h1>
