@@ -49,9 +49,7 @@ const PaymentPage = ({ amount }) => {
               </div>
             </form>
         </div>
-    <div>
-      Payment
-    </div>
+      </div>
   )
 }
 
