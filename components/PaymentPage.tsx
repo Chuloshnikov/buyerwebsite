@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 
+
 const PaymentPage = ({ amount }) => {
     const productData = useSelector((state: any) => state.buyer.productData);
     const userInfo = useSelector((state: any) => state.buyer.userInfo);
@@ -11,7 +12,7 @@ const PaymentPage = ({ amount }) => {
     const [clientPhone, setClientPhone] = useState('');
     const [newPost, setNewPost] = useState('');
     console.log(productData);
-    console.log(userInfo);
+
 
  
   return (
@@ -48,6 +49,8 @@ const PaymentPage = ({ amount }) => {
               </div>
             </form>
         </div>
+    <div>
+      Payment
     </div>
   )
 }

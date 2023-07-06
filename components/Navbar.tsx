@@ -70,9 +70,8 @@ const Navbar = () => {
                   <div className='absolute top-15 p-3 left-6 flex flex-col gap-2 border-[1px]
                    border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
                    >
-                    <a onClick={toogleMessagePanel} href="/"><BsTelegram className='w-7 h-7 text-blue-400'/></a>
-                    <a onClick={toogleMessagePanel} href="/"><BsWhatsapp className='w-7 h-7 text-green-500'/></a>
-                    <a></a>
+                    <Link onClick={toogleMessagePanel} href="/"><BsTelegram className='w-7 h-7 text-blue-400'/></Link>
+                    <Link onClick={toogleMessagePanel} href="/"><BsWhatsapp className='w-7 h-7 text-green-500'/></Link>
                   </div>)
                    : ''}
                 </div>
