@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import FormatePrice from './FormatePrice';
+import { useRouter } from 'next/router';
 
 interface PaymentPageProps {
   amount: number;
@@ -10,11 +11,14 @@ interface PaymentPageProps {
 const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
   const productData = useSelector((state: any) => state.buyer.productData);
   const userInfo = useSelector((state: any) => state.buyer.userInfo);
+  const router = useRouter();
   const [order, setOrder] = useState<any[]>([]);
   const [clientName, setClientName] = useState('');
   const [clientPhone, setClientPhone] = useState('');
   const [newPost, setNewPost] = useState('');
   const [isInputsFilled, setIsInputsFilled] = useState(false);
+  console.log(productData);
+  console.log(userInfo);
 
   useEffect(() => {
     if (clientName !== '' && clientPhone !== '' && newPost !== '') {
@@ -25,11 +29,38 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
   }, [clientName, clientPhone, newPost]);
 
   const handlePayment = async () => {
-    return;
+    // Виконати необхідні дії для передачі даних до платіжної системи
+    // і отримання URL переадресації на платіжну сторінку
+
+    try {
+      const response = await axios.post('https://pay.fondy.eu/api/checkout/redirect/', {
+        order_id: '',
+        
+        amount: amount,
+        // Додайте інші необхідні дані для платіжної системи
+      });
+
+      // Отримання URL переадресації
+      const redirectUrl = response.data.redirectUrl;
+
+      // Перенаправлення користувача на платіжну сторінку
+      window.location.href = redirectUrl;
+    } catch (error) {
+      // Обробка помилок при передачі даних до платіжної системи
+      console.error(error);
+
+      // Перенаправлення на сторінку з помилкою
+      router.push = '/ordererror';
+    }
   };
 
   const handleCreditPayment = async () => {
-    return;
+    // Виконати необхідні дії для оплати частинами
+    // Якщо оплата вдалась:
+    window.location.href = '/success';
+
+    // Якщо оплата не вдалась:
+    window.location.href = '/ordererror';
   };
 
   const namePlaceholder = "повне ім\'я та прізвище";
