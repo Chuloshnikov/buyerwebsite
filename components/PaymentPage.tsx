@@ -12,42 +12,29 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
   const productData = useSelector((state: any) => state.buyer.productData);
   const userInfo = useSelector((state: any) => state.buyer.userInfo);
   const router = useRouter();
-  const [order, setOrder] = useState<any[]>([]);
+  const [orderId, setOrderId] = useState<string>();
   const [clientName, setClientName] = useState('');
+  const [clientLastName, setClientLastName] = useState('');
   const [clientPhone, setClientPhone] = useState('');
   const [newPost, setNewPost] = useState('');
   const [isInputsFilled, setIsInputsFilled] = useState(false);
-  console.log(order);
-  console.log(order[0]?.order_id)
+  const status = 0;
+  console.log(orderId);
+ 
 
 
   useEffect(() => {
-    // Функція, що генерує випадковий ідентифікатор
     const generateOrderId = () => {
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
       let orderId = '';
       for (let i = 0; i < 10; i++) {
         orderId += characters.charAt(Math.floor(Math.random() * characters.length));
       }
-      return orderId;
+      return setOrderId(orderId);
     };
 
-    const addProductWithOrderId = () => {
-      // Перевірка, чи є необхідні дані для додавання продукту
-      if (Object.keys(userInfo).length > 0 && amount > 0) {
-        const newOrder = {
-          userInfo: userInfo,
-          productData: productData,
-          order_id: generateOrderId(),
-          amount: amount
-          
-        };
-        setOrder([newOrder]);
-      }
-    };
-
-      addProductWithOrderId();
-    }, [productData, userInfo, amount]);
+    generateOrderId();
+    }, []);
 
 
   useEffect(() => {
@@ -58,6 +45,9 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
     }
   }, [clientName, clientPhone, newPost]);
 
+  const data = {orderId, productData, userInfo, amount, clientName, clientPhone, newPost };
+  console.dir(data);
+
   function convertToKopecks(amount) {
     var kopecks = amount * 100;
     return kopecks;
@@ -65,14 +55,14 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
 
   let kopecksAmount = convertToKopecks(amount);
   
-  const handlePayment = async () => {
+  const handlePayment = async (e) => {
     e.preventDefault();
     // Виконати необхідні дії для передачі даних до платіжної системи
     // і отримання URL переадресації на платіжну сторінку
 
     try {
       const response = await axios.post('https://pay.fondy.eu/api/checkout/redirect/', {
-        order_id: order[0]?.order_id,
+        order_id: orderId,
         merchant_id: '1397120',
         order_desc: 'clothing and accessories',
         signature: 'Not for tests. Test credentials: https://docs.fondy.eu/docs/page/2/',
@@ -84,11 +74,13 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
       if (response) {
         window.location.href = redirectUrl;
       }
-      //запис ордеру у базу
-      if (redirectUrl) {
-          
-          await axios.post('/api/orderdata', data)
 
+      const done = true
+      //запис ордеру у базу
+      if (done) {
+          const paymentMethod = 'card';
+          const data = {orderId, productData, userInfo, amount, clientName, clientLastName, clientPhone, newPost, paymentMethod, status};
+          await axios.post('/api/orderdata', data);
       }
     
       
@@ -99,7 +91,7 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
 
   };
 
-  const handleCreditPayment = async () => {
+  const handleCreditPayment = async (e) => {
     e.preventDefault();
     // Виконати необхідні дії для оплати частинами
     // Якщо оплата вдалась:
@@ -109,19 +101,28 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
     window.location.href = '/ordererror';
   };
 
-  const namePlaceholder = "повне ім\'я та прізвище";
+  const namePlaceholder = "Введіть повне ім\'я...";
 
   return (
     <div className='max-w-contentContainer mx-auto flex items-center h-[500px]'>
       <div className='mx-auto shadow-bannerShadow p-5'>
         <form className='flex flex-col gap-5'>
           <div className='flex flex-col'>
-            <label>Ім'я та прізвище для відправки:</label>
+            <label>Введіть ваше ім'я:</label>
             <input
               onChange={e => setClientName(e.target.value)}
               className='border-b-[2px] border-b-gray-400 text-gray-700'
               type="text"
               placeholder={namePlaceholder}
+            />
+          </div>
+          <div className='flex flex-col'>
+            <label>Введіть ваше прізвище:</label>
+            <input
+              onChange={e => setClientName(e.target.value)}
+              className='border-b-[2px] border-b-gray-400 text-gray-700'
+              type="text"
+              placeholder="Введіть Ваше прізвище..."
             />
           </div>
           <div className='flex flex-col'>
@@ -144,7 +145,7 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
               type="text"
               value={newPost}
               onChange={e => setNewPost(e.target.value)}
-              placeholder="Номер та адреса відділення Нової Пошти"
+              placeholder="Номер та адреса відділення Нової Пошти..."
             />
           </div>
         </form>
