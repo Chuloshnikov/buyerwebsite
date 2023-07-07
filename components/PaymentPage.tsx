@@ -17,8 +17,38 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
   const [clientPhone, setClientPhone] = useState('');
   const [newPost, setNewPost] = useState('');
   const [isInputsFilled, setIsInputsFilled] = useState(false);
-  console.log(productData);
-  console.log(userInfo);
+  console.log(order);
+  console.log(order[0]?.order_id)
+
+
+  useEffect(() => {
+    // Функція, що генерує випадковий ідентифікатор
+    const generateOrderId = () => {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let orderId = '';
+      for (let i = 0; i < 10; i++) {
+        orderId += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      return orderId;
+    };
+
+    const addProductWithOrderId = () => {
+      // Перевірка, чи є необхідні дані для додавання продукту
+      if (Object.keys(userInfo).length > 0 && amount > 0) {
+        const newOrder = {
+          userInfo: userInfo,
+          productData: productData,
+          order_id: generateOrderId(),
+          amount: amount
+          
+        };
+        setOrder([newOrder]);
+      }
+    };
+
+      addProductWithOrderId();
+    }, [productData, userInfo, amount]);
+
 
   useEffect(() => {
     if (clientName !== '' && clientPhone !== '' && newPost !== '') {
@@ -28,33 +58,49 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
     }
   }, [clientName, clientPhone, newPost]);
 
+  function convertToKopecks(amount) {
+    var kopecks = amount * 100;
+    return kopecks;
+  }
+
+  let kopecksAmount = convertToKopecks(amount);
+  
   const handlePayment = async () => {
+    e.preventDefault();
     // Виконати необхідні дії для передачі даних до платіжної системи
     // і отримання URL переадресації на платіжну сторінку
 
     try {
       const response = await axios.post('https://pay.fondy.eu/api/checkout/redirect/', {
-        order_id: '',
-        
-        amount: amount,
-        // Додайте інші необхідні дані для платіжної системи
+        order_id: order[0]?.order_id,
+        merchant_id: '1397120',
+        order_desc: 'clothing and accessories',
+        signature: 'Not for tests. Test credentials: https://docs.fondy.eu/docs/page/2/',
+        amount: kopecksAmount,
+        currency: 'UAH',
       });
-
       // Отримання URL переадресації
       const redirectUrl = response.data.redirectUrl;
+      if (response) {
+        window.location.href = redirectUrl;
+      }
+      //запис ордеру у базу
+      if (redirectUrl) {
+          
+          await axios.post('/api/orderdata', data)
 
-      // Перенаправлення користувача на платіжну сторінку
-      window.location.href = redirectUrl;
+      }
+    
+      
     } catch (error) {
-      // Обробка помилок при передачі даних до платіжної системи
       console.error(error);
-
-      // Перенаправлення на сторінку з помилкою
-      router.push = '/ordererror';
+      window.location.href = '/ordererror';
     }
+
   };
 
   const handleCreditPayment = async () => {
+    e.preventDefault();
     // Виконати необхідні дії для оплати частинами
     // Якщо оплата вдалась:
     window.location.href = '/success';
