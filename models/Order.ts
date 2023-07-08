@@ -22,17 +22,41 @@ const OrderSchema = new mongoose.Schema({
         type: Number, required: true, 
     },
     status: {
-        type: String, default: 0,
+        type: Number, default: 0,
     },
     productData: {
-        type:[{title: {type:String, required: true}, price:{type:Number, required:true}, quantity: {type: Number, required: true}, brand: {type:String, required: true}, sizes:{type: String}}]
+        type:[{
+            title: {
+                type: String, required: true, maxlength: 60
+            },
+            brand: {
+                type: String, required: true, maxlength: 60
+            },
+            description: {
+                type: String, required: true, maxlength: 1000
+            },
+            oldPrice: {
+                type: Number, required: false, 
+            },
+            price: {
+                type: Number, required: true, 
+            },
+            sizes: {
+                type: String, required: false,
+            },
+            category: {
+                type: String, required: true, maxlength: 60
+            },
+            quantity: {
+                type: Number, required: true,
+            },
+            images: {
+                type: [{type: String}]
+            },
+        }]
     },
     userInfo: {
-       type: [{
-            email: {type: String, required: true},
-            name: {type: String, required: true},
-            image: {type: String, required: true},
-       }]
+       type: [{email: {type: String, required: true}, image: {type: String, required: true}, name: {type: String, required: true}}]
     },
     paymentMethod: {
         type: String, required: true,

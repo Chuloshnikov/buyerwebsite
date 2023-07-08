@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import FormatePrice from './FormatePrice';
 import { useRouter } from 'next/router';
+import { resetCart } from "../redux/buyerSlice";
 
 interface PaymentPageProps {
   amount: number;
@@ -11,6 +12,7 @@ interface PaymentPageProps {
 const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
   const productData = useSelector((state: any) => state.buyer.productData);
   const userInfo = useSelector((state: any) => state.buyer.userInfo);
+  const dispatch = useDispatch();
   const router = useRouter();
   const [orderId, setOrderId] = useState<string>();
   const [clientName, setClientName] = useState('');
@@ -21,7 +23,7 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
   const status = 0;
   console.log(orderId);
  
-
+  
 
   useEffect(() => {
     const generateOrderId = () => {
@@ -45,7 +47,7 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
     }
   }, [clientName, clientPhone, newPost]);
 
-  const data = {orderId, productData, userInfo, amount, clientName, clientPhone, newPost };
+  const data = { orderId, productData, userInfo, amount, clientName, clientPhone, newPost };
   console.dir(data);
 
   function convertToKopecks(amount) {
@@ -54,12 +56,31 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
   }
 
   let kopecksAmount = convertToKopecks(amount);
+
+  const createOrder = async (data) => {
+    try {
+      const res = await axios.post("/api/orderdata", data);
+      if (res.status === 201) {
+        dispatch(resetCart());
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   
   const handlePayment = async (e) => {
     e.preventDefault();
+
+    const done = true
+      //запис ордеру у базу
+      if (done) {
+          const paymentMethod = 'card';
+          const data = {orderId, productData, userInfo, amount, clientName, clientLastName, clientPhone, newPost, paymentMethod, status};
+          createOrder(data);
+      }
     // Виконати необхідні дії для передачі даних до платіжної системи
     // і отримання URL переадресації на платіжну сторінку
-
+      /*
     try {
       const response = await axios.post('https://pay.fondy.eu/api/checkout/redirect/', {
         order_id: orderId,
@@ -75,20 +96,14 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
         window.location.href = redirectUrl;
       }
 
-      const done = true
-      //запис ордеру у базу
-      if (done) {
-          const paymentMethod = 'card';
-          const data = {orderId, productData, userInfo, amount, clientName, clientLastName, clientPhone, newPost, paymentMethod, status};
-          await axios.post('/api/orderdata', data);
-      }
+      
     
       
     } catch (error) {
       console.error(error);
       window.location.href = '/ordererror';
     }
-
+    */
   };
 
   const handleCreditPayment = async (e) => {
@@ -99,6 +114,7 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
 
     // Якщо оплата не вдалась:
     window.location.href = '/ordererror';
+   
   };
 
   const namePlaceholder = "Введіть повне ім\'я...";
@@ -119,7 +135,7 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
           <div className='flex flex-col'>
             <label>Введіть ваше прізвище:</label>
             <input
-              onChange={e => setClientName(e.target.value)}
+              onChange={e => setClientLastName(e.target.value)}
               className='border-b-[2px] border-b-gray-400 text-gray-700'
               type="text"
               placeholder="Введіть Ваше прізвище..."
