@@ -56,10 +56,13 @@ const OrderSchema = new mongoose.Schema({
         }]
     },
     userInfo: {
-       type: [{email: {type: String, required: true}, image: {type: String, required: true}, name: {type: String, required: true}}]
+       type: [{email: {type: String, required: true}, image: {type: String }, name: {type: String, required: true}}]
     },
     paymentMethod: {
         type: String, required: true,
+    },
+    invoice : {
+        type: String, required: true, maxlength: 100
     }
 }, {timestamps: true}
 );

@@ -30,7 +30,19 @@ export default async function handler(
 
     if (method === 'POST')  {
         try {
-            const {orderId, productData, userInfo, amount, clientName, clientLastName, clientPhone, newPost, paymentMethod, status} = req.body;
+            const {
+                orderId, 
+                productData, 
+                userInfo, 
+                amount, 
+                clientName, 
+                clientLastName, 
+                clientPhone, 
+                newPost, 
+                paymentMethod, 
+                status, 
+                invoice
+            } = req.body;
             const orderdata = await Order.create({
                 orderId, 
                 productData, 
@@ -41,7 +53,8 @@ export default async function handler(
                 clientPhone, 
                 newPost, 
                 paymentMethod, 
-                status
+                status,
+                invoice
             }); 
             res.status(201).json(orderdata);
         } catch (error) {

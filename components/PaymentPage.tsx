@@ -75,9 +75,27 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
       //запис ордеру у базу
       if (done) {
           const paymentMethod = 'card';
-          const data = {orderId, productData, userInfo, amount, clientName, clientLastName, clientPhone, newPost, paymentMethod, status};
+          const invoice = "not specified";
+          const data = {
+            orderId, 
+            productData, 
+            userInfo, 
+            amount, 
+            clientName, 
+            clientLastName, 
+            clientPhone, 
+            newPost, 
+            paymentMethod, 
+            status, 
+            invoice
+          };
           createOrder(data);
       }
+      /*
+      if (done) {
+        window.location.href = '/success'
+      }
+      */
     // Виконати необхідні дії для передачі даних до платіжної системи
     // і отримання URL переадресації на платіжну сторінку
       /*
