@@ -63,15 +63,16 @@ export default async function handler(
     }
 
     if (method === 'GET') {
-        if (req.query?.id) {
-            res.json(await Product.findOne({_id: req.query.id}));
-        } else {
-            res.json(await Product.find());
-        }
-    
-    }
-
-       
-
+        try {
+            const { email } = req.query;
         
-    }
+            const orders = await Order.find();
+        
+            const matchingOrders = orders.filter((order) => order.userInfo.some((user) => user.email === email));
+        
+            res.status(200).json(matchingOrders);
+        } catch (error) {
+            res.status(500).json(error);
+        } 
+    }       
+}

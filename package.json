@@ -23,6 +23,7 @@
     "formik": "^2.2.9",
     "framer-motion": "^10.12.16",
     "liqpay": "^0.0.1",
+    "mongodb": "^5.7.0",
     "mongoose": "^7.0.3",
     "next": "13.2.4",
     "next-auth": "^4.22.1",
