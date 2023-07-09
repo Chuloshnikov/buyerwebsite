@@ -3,6 +3,7 @@ import { getSession, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
+import ProfileHeader from '../components/ProfileHeader';
 
 export default function Profile(){
 
@@ -17,8 +18,8 @@ export default function Profile(){
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/buyerfavicon.ico" />
       </Head>
-      <section>
-        Profile
+      <section className='mt-10 mb-12 flex flex-col gap-5 items-center justify-center'>
+        <ProfileHeader/>
       </section>
     </>
   )
