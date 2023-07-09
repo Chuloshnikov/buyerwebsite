@@ -67,13 +67,17 @@ const Navbar = () => {
                 <div>
                   <AiOutlineMessage onClick={toogleMessagePanel} className='w-7 h-7 rounded-full hover:bg-orange-400 duration-300'/>
                   {openMessagePanel ? (
-                  <div className='absolute top-15 p-3 left-6 flex flex-col gap-2 border-[1px]
+                  <div 
+                  onClick={toogleMessagePanel}
+                  className='absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-10'>
+                      <div className='z-50 absolute top-10 p-3 left-6 flex flex-col gap-2 border-[1px]
                    border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
-                   >
-                    <Link onClick={toogleMessagePanel} href="/"><BsTelegram className='w-7 h-7 text-blue-400'/></Link>
-                    <Link onClick={toogleMessagePanel} href="/"><BsWhatsapp className='w-7 h-7 text-green-500'/></Link>
-                  </div>)
-                   : ''}
+                    >
+                      <Link onClick={toogleMessagePanel} href="/"><BsTelegram className='w-7 h-7 text-blue-400'/></Link>
+                      <Link onClick={toogleMessagePanel} href="/"><BsWhatsapp className='w-7 h-7 text-green-500'/></Link>
+                    </div>
+                  </div>
+                  ) : ''}
                 </div>
                 <a className='border:none xs:hidden md:block md:text-base' href="tel:+38-093-996-10-87">+38 093 996 10 87</a>
                 <a className='xs:block md:hidden' href="tel:+38-093-996-10-87"><AiOutlinePhone className='w-7 h-7'/></a>
@@ -125,7 +129,7 @@ const Navbar = () => {
                     <SlBasket className='w-7 h-7'/>
                     <span className='relative -top-7 left-4 w-4 h-4 bg-orange-400
                     text-white text-xs rounded-full
-                    flex flex-col justify-center items-center z-10'
+                    flex flex-col justify-center items-center z-1'
                     >
                       {productData.length > 0 ? productData.length : 0}
                     </span>
@@ -137,34 +141,40 @@ const Navbar = () => {
                 </div>
                 {openMenu ? 
                 (
-                <div className='absolute top-20 right-5 p-4 flex flex-col gap-2 border-[1px]
-                 border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
-                 >
-                    <div className='flex w-full justify-end'>
-                      <button onClick={toogleMenu} className='block'><AiOutlineClose className='w-5 h-5'/></button>
-                    </div>
-                    <nav className='p-10'>
-                      <ul className='flex flex-col gap-3'>
-                        <li onClick={toogleMenu}><Link href="/products">Каталог</Link></li>
-                        <li onClick={toogleMenu}><Link href="/about">Про послуги</Link></li>
-                        <li onClick={toogleMenu}>dfgdfgfg</li>
-                        <li onClick={toogleMenu}><Link href="/faq">FAQ</Link></li>
-                        {!userInfo && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
-                        {userInfo && (<li onClick={toogleMenu}><Link href="/profile">Мій профіль</Link></li>)}
-                        {
-                        session && (
-                        <li onClick={toogleMenu}>
-                          <span 
-                          className='cursor-pointer'
-                            onClick={() => signOut()}
-                            >
-                              Вийти
-                          </span>
-                        </li>)
-                        }
-                      </ul>
-                    </nav>
-                </div>) : ''}
+                <div 
+                onClick={toogleMenu}
+                className='absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-5'
+                >
+                      <div className='absolute z-10 top-20 right-5 p-4 flex flex-col gap-2 border-[1px]
+                        border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
+                      >
+                      <div className='flex w-full justify-end'>
+                        <button onClick={toogleMenu} className='block'><AiOutlineClose className='w-5 h-5'/></button>
+                      </div>
+                      <nav className='p-10'>
+                        <ul className='flex flex-col gap-3'>
+                          <li onClick={toogleMenu}><Link href="/products">Каталог</Link></li>
+                          <li onClick={toogleMenu}><Link href="/about">Про послуги</Link></li>
+                          <li onClick={toogleMenu}>dfgdfgfg</li>
+                          <li onClick={toogleMenu}><Link href="/faq">FAQ</Link></li>
+                          {!userInfo && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
+                          {userInfo && (<li onClick={toogleMenu}><Link href="/profile">Мій профіль</Link></li>)}
+                          {
+                          session && (
+                          <li onClick={toogleMenu}>
+                            <span 
+                            className='cursor-pointer'
+                              onClick={() => signOut()}
+                              >
+                                Вийти
+                            </span>
+                          </li>)
+                          }
+                        </ul>
+                      </nav>
+                  </div>
+                </div>
+                ) : ''}
               </div>
            </div>
         </div>
