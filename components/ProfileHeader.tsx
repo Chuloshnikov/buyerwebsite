@@ -16,7 +16,7 @@ const ProfileHeader = () => {
                 <p>@{userInfo?.email}</p>
             </div>
             <div>
-                {userInfo?.image ? (<Image src={userInfo.image} width={48} height={48} className="rounded-full" alt="userimage"/>)
+                {userInfo?.image ? (<Image src={userInfo.image} width={48} height={48} className="rounded-full xs:hidden sm:block" alt="userimage"/>)
                  : (
                     <div className='p-2 bg-orange-400 rounded-full'>
                         <FaUser className='text-white h-8 w-8'/>
