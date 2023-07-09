@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
 import ProfileHeader from '../components/ProfileHeader';
+import CustomerOrders from '../components/CustomerOrders';
 
 export default function Profile(){
 
@@ -13,13 +14,14 @@ export default function Profile(){
   return (
     <>
       <Head>
-        <title>Log in</title>
+        <title>Особистий кабінет</title>
         <meta name="Баєр Анастасія" content="Tвій найкращий баєр" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/buyerfavicon.ico" />
       </Head>
-      <section className='mt-10 mb-12 flex flex-col gap-5 items-center justify-center'>
+      <section className='mt-10 mb-12 flex flex-col gap-5 items-center min-h-[500px]'>
         <ProfileHeader/>
+        <CustomerOrders/>
       </section>
     </>
   )
