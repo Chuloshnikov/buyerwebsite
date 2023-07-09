@@ -45,7 +45,7 @@ const CustomerOrders = () => {
         <div className='max-w-contentContainer shadow-bannerShadow w-full text-gray-800'>
             {/* Відображення списку замовлень */}
             {isLoading && <Spinner/>}
-            {orders.length ? (<TableContainer component={Paper}>
+            {orders?.length ? (<TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
                     <TableHead>
                     <TableRow>
