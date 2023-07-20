@@ -65,7 +65,7 @@ const AboutOrderingSection = () => {
   };
 
   return (
-    <div className='m-auto flex gap-4 text-gray-800'>
+    <div className='xs:flex-col md:flex-row mx-auto flex gap-4 text-gray-800'>
       <motion.div 
         className='container'
         ref={leftColumnRef}

@@ -106,7 +106,7 @@ const Navbar = () => {
                 </div>
                 ) : ''}
                 </div>
-                <div className='absolute top-[500%] right-[500%]'>
+                <div className='absolute top-[800%] right-[10%]'>
                   <AiOutlineMessage onClick={toogleMessagePanel} className='w-7 h-7 rounded-full hover:bg-orange-400 duration-300'/>
                   {openMessagePanel ? (
                   <div 
@@ -122,7 +122,7 @@ const Navbar = () => {
                   ) : ''}
                 </div>
                 <a className='border:none xs:hidden lg:block md:text-base' href="tel:+38-093-996-10-87">+38 093 996 10 87</a>
-                <a className='xs:block md:hidden absolute top-[500%] right-[500%]' href="tel:+38-093-996-10-87"><AiOutlinePhone className='w-7 h-7'/></a>
+                <a className='xs:block absolute top-[800%] right-[8%]' href="tel:+38-093-996-10-87"><AiOutlinePhone className='w-7 h-7'/></a>
               </div>
               <div className=''>
                 <ul className='flex gap-7 justify-center items-center'>
@@ -145,7 +145,7 @@ const Navbar = () => {
                   >
                     <p className='xs:hidden mdl:block'>Buyer</p>
                       <Link
-                      className='font-semibold hover:border-orange-500 hover:border-b-2 my-4'
+                      className='font-semibold hover:border-orange-500 my-4'
                       href="/" passHref>
                         <Image className='w-10 h-10 rounded-full border-[3px] border-orange-400' src={logo} alt="logo"/>
                       </Link>

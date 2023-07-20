@@ -68,7 +68,7 @@ const AboutClosedChannelSection = () => {
 
   return (
     <>
-        <div className='m-auto flex gap-10 text-gray-800'>
+        <div className='xs:flex-col md:flex-row mx-auto flex gap-10 text-gray-800'>
           <motion.div 
           ref={leftColumnRef}
           variants={leftColumn}

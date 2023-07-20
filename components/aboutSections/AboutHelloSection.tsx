@@ -40,7 +40,7 @@ const AboutHelloSection = () => {
 
   return (
     <>
-        <div className='flex gap-2 text-center justify-center items-center'>
+        <div className='xs:mx-6 xs:flex-col md:flex-row flex gap-2 text-center justify-center items-center'>
           <div>
             <motion.div
               className="container"
