@@ -125,7 +125,9 @@ const Navbar = () => {
                 </div>
                 {/* Bascet Start */}
                 <div className='mdl:ml-[30px] xs:ml-[5px] pt-3'>
-                  <Link  href="/cart" passHref>
+                {
+                  productData.length !== 0 ? (
+                    <Link  href="/cart" passHref>
                     <SlBasket className='w-7 h-7'/>
                     <span className='relative -top-7 left-4 w-4 h-4 bg-orange-400
                     text-white text-xs rounded-full
@@ -134,6 +136,9 @@ const Navbar = () => {
                       {productData.length > 0 ? productData.length : 0}
                     </span>
                   </Link>
+                  ) : ("")
+                } 
+                  
                 </div>
                 {/* Bascet End */}
                 <div onClick={toogleMenu}>
