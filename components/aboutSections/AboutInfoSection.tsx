@@ -47,7 +47,7 @@ const AboutInfoSection = () => {
   return (
     <>
       <div
-        className='flex gap-4 text-center justify-center text-lg text-gray-800 font-semibold'
+        className='xs:flex-col md:flex-row flex gap-4 text-center justify-center text-lg text-gray-800 font-semibold'
       >
         <motion.div
           className="box"
