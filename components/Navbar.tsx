@@ -62,9 +62,51 @@ const Navbar = () => {
 
   return (
         <div className='w-full bg-white text-gray-600 px-4 sticky top-0 z-50'>
-           <div className='max-w-container mx-auto flex md:justify-between xs:justify-evenly items-center border-b-[1px] border-b-gray-300'>
+           <div className='max-w-container mx-auto flex justify-between items-center border-b-[1px] border-b-gray-300'>
               <div className='flex items-center md:gap-3 xs:gap-1'>
                 <div>
+                <div 
+                className='xs:block lg:hidden'
+                onClick={toogleMenu}>
+                  {openMenu === true ? <BiMenuAltRight className='w-7 h-7'/> : <BiMenu className='w-7 h-7'/>}
+                </div>
+                {openMenu ? 
+                (
+                <div 
+                onClick={toogleMenu}
+                className='absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-5 md:hidden'
+                >
+                      <div className='absolute z-10 top-20 right-5 p-4 flex flex-col gap-2 border-[1px]
+                        border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
+                      >
+                      <div className='flex w-full justify-end'>
+                        <button onClick={toogleMenu} className='block'><AiOutlineClose className='w-5 h-5'/></button>
+                      </div>
+                      <nav className='p-10'>
+                        <ul className='flex flex-col gap-3'>
+                          <li onClick={toogleMenu}><Link href="/products">Каталог</Link></li>
+                          <li onClick={toogleMenu}><Link href="/about">Про послуги</Link></li>
+                          <li onClick={toogleMenu}><Link href="/faq">FAQ</Link></li>
+                          {!userInfo && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
+                          {userInfo && (<li onClick={toogleMenu}><Link href="/profile">Мій профіль</Link></li>)}
+                          {
+                          session && (
+                          <li onClick={toogleMenu}>
+                            <span 
+                            className='cursor-pointer'
+                              onClick={() => signOut()}
+                              >
+                                Вийти
+                            </span>
+                          </li>)
+                          }
+                        </ul>
+                      </nav>
+                  </div>
+                </div>
+                ) : ''}
+                </div>
+                <div className='absolute top-[500%] right-[500%]'>
                   <AiOutlineMessage onClick={toogleMessagePanel} className='w-7 h-7 rounded-full hover:bg-orange-400 duration-300'/>
                   {openMessagePanel ? (
                   <div 
@@ -79,29 +121,55 @@ const Navbar = () => {
                   </div>
                   ) : ''}
                 </div>
-                <a className='border:none xs:hidden md:block md:text-base' href="tel:+38-093-996-10-87">+38 093 996 10 87</a>
-                <a className='xs:block md:hidden' href="tel:+38-093-996-10-87"><AiOutlinePhone className='w-7 h-7'/></a>
+                <a className='border:none xs:hidden lg:block md:text-base' href="tel:+38-093-996-10-87">+38 093 996 10 87</a>
+                <a className='xs:block md:hidden absolute top-[500%] right-[500%]' href="tel:+38-093-996-10-87"><AiOutlinePhone className='w-7 h-7'/></a>
               </div>
-              <div className='flex items-center gap-2 md:ml-[30px] xs:ml-0 text-3xl text-orange-400 py-4'>
-                <p className='xs:hidden mdl:block'>Buyer</p>
-                <Link href="/" passHref>
-                  <Image className='w-10 h-10 rounded-full border-[3px] border-orange-400' src={logo} alt="logo"/>
-                </Link>
-                <p className='xs:hidden mdl:block'>Anastasiia</p>
+              <div className=''>
+                <ul className='flex gap-7 justify-center items-center'>
+                  <li
+                  className='xs:hidden lg:block'
+                  >
+                    <Link
+                    className='font-semibold hover:border-orange-500 hover:border-b-2 my-4'
+                    href="/products">Каталог</Link>
+                  </li>
+                  <li
+                  className='xs:hidden lg:block'
+                  >
+                    <Link
+                    className='font-semibold hover:border-orange-500 hover:border-b-2 my-4'
+                    href="/about">Про послуги</Link>
+                  </li>
+                  <li 
+                  className='flex items-center gap-2 xs:ml-0 text-3xl text-orange-400'
+                  >
+                    <p className='xs:hidden mdl:block'>Buyer</p>
+                      <Link
+                      className='font-semibold hover:border-orange-500 hover:border-b-2 my-4'
+                      href="/" passHref>
+                        <Image className='w-10 h-10 rounded-full border-[3px] border-orange-400' src={logo} alt="logo"/>
+                      </Link>
+                    <p className='xs:hidden mdl:block'>Anastasiia</p>
+                  </li>
+                  <li className='xs:hidden lg:block'>
+                    <Link
+                    className='font-semibold hover:border-orange-500 hover:border-b-2 my-4'
+                    href="/faq">FAQ</Link>
+                  </li>
+                  <li className='font-semibold my-4 xs:hidden lg:block'>
+                    {userInfo && (
+                    <li onClick={toogleMenu}>
+                        <Link 
+                        className='font-semibold hover:border-orange-500 hover:border-b-2 my-4'
+                        href="/profile">
+                          Мій профіль
+                        </Link>
+                      </li>
+                      )}  
+                  </li>
+                </ul>
               </div>
               <div className='py-2 flex gap-3 md:gap-1 items-center'>
-                <a href="https://www.instagram.com/anastasia_zahorodnia_work" 
-                className='rounded-full mdl:p-2 xs:p-0 hover:bg-orange-400 duration-300'
-                target="_blank"
-                >
-                  <AiOutlineInstagram className='mdl:w-5 mdl:h-5 xs:w-7 xs:h-7'/>
-                </a>
-                <a href="https://www.facebook.com/anastasia.zahorodnia.work" 
-                className='rounded-full mdl:p-2 xs:p-0 hover:bg-orange-400 duration-300'
-                target="_blank"
-                >
-                  <FaFacebookF className='mdl:w-5 mdl:h-5 xs:w-7 xs:h-7'/>
-                </a>
                 <div className='felx flex-col gap-1'>
                   <div>
                       {/*login button*/}
@@ -136,50 +204,12 @@ const Navbar = () => {
                       {productData.length > 0 ? productData.length : 0}
                     </span>
                   </Link>
-                  ) : ("")
+                  ) : 
+                  ("")
                 } 
                   
                 </div>
                 {/* Bascet End */}
-                <div onClick={toogleMenu}>
-                  {openMenu === true ? <BiMenuAltRight className='w-7 h-7'/> : <BiMenu className='w-7 h-7'/>}
-                </div>
-                {openMenu ? 
-                (
-                <div 
-                onClick={toogleMenu}
-                className='absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-5'
-                >
-                      <div className='absolute z-10 top-20 right-5 p-4 flex flex-col gap-2 border-[1px]
-                        border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
-                      >
-                      <div className='flex w-full justify-end'>
-                        <button onClick={toogleMenu} className='block'><AiOutlineClose className='w-5 h-5'/></button>
-                      </div>
-                      <nav className='p-10'>
-                        <ul className='flex flex-col gap-3'>
-                          <li onClick={toogleMenu}><Link href="/products">Каталог</Link></li>
-                          <li onClick={toogleMenu}><Link href="/about">Про послуги</Link></li>
-                          <li onClick={toogleMenu}>dfgdfgfg</li>
-                          <li onClick={toogleMenu}><Link href="/faq">FAQ</Link></li>
-                          {!userInfo && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
-                          {userInfo && (<li onClick={toogleMenu}><Link href="/profile">Мій профіль</Link></li>)}
-                          {
-                          session && (
-                          <li onClick={toogleMenu}>
-                            <span 
-                            className='cursor-pointer'
-                              onClick={() => signOut()}
-                              >
-                                Вийти
-                            </span>
-                          </li>)
-                          }
-                        </ul>
-                      </nav>
-                  </div>
-                </div>
-                ) : ''}
               </div>
            </div>
         </div>
