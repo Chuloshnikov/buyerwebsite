@@ -85,7 +85,6 @@ const Navbar = () => {
                       <nav className='p-10'>
                         <ul className='flex flex-col gap-3'>
                           <li onClick={toogleMenu}><Link href="/products">Каталог</Link></li>
-                          <li onClick={toogleMenu}><Link href="/about">Про послуги</Link></li>
                           <li onClick={toogleMenu}><Link href="/faq">FAQ</Link></li>
                           {!userInfo && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
                           {userInfo && (<li onClick={toogleMenu}><Link href="/profile">Мій профіль</Link></li>)}
@@ -132,13 +131,6 @@ const Navbar = () => {
                     <Link
                     className='font-semibold hover:border-orange-500 hover:border-b-2 my-4'
                     href="/products">Каталог</Link>
-                  </li>
-                  <li
-                  className='xs:hidden lg:block'
-                  >
-                    <Link
-                    className='font-semibold hover:border-orange-500 hover:border-b-2 my-4'
-                    href="/about">Про послуги</Link>
                   </li>
                   <li 
                   className='flex items-center gap-2 xs:ml-0 text-3xl text-orange-400'
