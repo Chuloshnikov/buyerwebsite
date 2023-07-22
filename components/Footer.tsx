@@ -27,20 +27,14 @@ const Footer = () => {
                 </a>
         </div>
         <div>
-          <div className='flex items-center gap-2 md:ml-[30px] xs:ml-0 text-3xl text-orange-400 py-4'>
+          <div className='flex items-center gap-2 xs:ml-0 text-3xl text-orange-400 py-4'>
                 <p className='text-white xs:hidden mdl:block'>Buyer</p>
                 <Link href="/" passHref>
                   <Image className='w-10 h-10 rounded-full border-[3px] border-orange-700' src={logo} alt="logo"/>
                 </Link>
                 <p className='text-white xs:hidden mdl:block'>Anastasiia</p>
             </div>
-            <ol className='xs:hidden lg:flex items-center gap-2 text-xs'>
-                <li>
-                  <Link href="/about" passHref className='hover:scale-105 hover:underline duration-300'>Про послуги</Link>
-                </li>
-                <li>
-                  <div>|</div>
-                </li>
+            <ol className='xs:hidden lg:flex items-center text-center gap-2 text-xs'>
                 <li>
                   <Link href="/legal_terms" passHref className='hover:scale-105 hover:underline duration-300'>Умови використання сайту</Link>
                 </li>
