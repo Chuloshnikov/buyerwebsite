@@ -12,6 +12,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSession, signOut, SessionContext } from "next-auth/react";
 import { addUser, removeUser } from '../redux/buyerSlice';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -105,13 +106,20 @@ const Navbar = () => {
                 </div>
                 ) : ''}
                 </div>
-                <div className='absolute top-[800%] right-[10%]'>
-                  <AiOutlineMessage onClick={toogleMessagePanel} className='w-7 h-7 rounded-full hover:bg-orange-400 duration-300'/>
+                <div className='absolute top-[830%] right-[10%]'>
+                  <motion.div
+                  initial={{scale: 1}}
+                  animate={{ scale: 1.2}}
+                  transition={{repeat: Infinity, duration: 2}}
+                  className="p-1 bg-blue-500 rounded-full shadow-lg"
+                  >
+                      <AiOutlineMessage onClick={toogleMessagePanel} className='w-10 h-10 text-white rounded-full duration-300'/>
+                  </motion.div>
                   {openMessagePanel ? (
                   <div 
                   onClick={toogleMessagePanel}
-                  className='absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-10'>
-                      <div className='z-50 absolute top-10 p-3 left-6 flex flex-col gap-2 border-[1px]
+                  className='absolute top-0 left-0 z-10'>
+                      <div className='z-50 absolute -top-12 p-3 left-6 flex flex-col gap-2 border-[1px]
                    border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
                     >
                       <Link onClick={toogleMessagePanel} href="/"><BsTelegram className='w-7 h-7 text-blue-400'/></Link>
@@ -121,7 +129,16 @@ const Navbar = () => {
                   ) : ''}
                 </div>
                 <a className='border:none xs:hidden lg:block md:text-base' href="tel:+38-093-996-10-87">+38 093 996 10 87</a>
-                <a className='xs:block absolute top-[800%] right-[8%]' href="tel:+38-093-996-10-87"><AiOutlinePhone className='w-7 h-7'/></a>
+                <a className='xs:block absolute top-[740%] right-[9.9%]' href="tel:+38-093-996-10-87">
+                  <motion.div
+                    initial={{ rotate: 0, scale: 1 }} 
+                    animate={{ rotate: [0, 30, -50, 0], scale: 1.1 }}
+                    transition={{repeat: Infinity, duration: 0.8}}
+                    className="p-1 rounded-full bg-green-500 shadow-lg"
+                    >
+                      <AiOutlinePhone className='w-11 h-11 text-white'/>
+                  </motion.div>
+                  </a>
               </div>
               <div className=''>
                 <ul className='flex gap-7 justify-center items-center'>
