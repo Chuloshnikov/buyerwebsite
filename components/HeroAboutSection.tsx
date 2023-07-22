@@ -3,6 +3,8 @@ import AboutClosedChannelSection from './aboutSections/AboutClosedChannelSection
 import AboutHelloSection from './aboutSections/AboutHelloSection';
 import AboutOrderingSection from './aboutSections/AboutOrderingSection';
 import AboutPaymentSection from './aboutSections/AboutPaymentSection';
+import { BsFillCaretDownFill } from 'react-icons/bs';
+import { motion } from 'framer-motion';
 
 const HeroAboutSection = () => {
     const [aboutOpen, setAboutOpen] = useState(false);
@@ -12,15 +14,19 @@ const HeroAboutSection = () => {
     <div>
         {aboutOpen === false ? (
             <div 
-            className='text-center'
+            className='flex justify-center'
             >
-                <button
+                <motion.div
                 onClick={() => setAboutOpen(true)}
-                className='bg-orange-400 text-white font-semibold
-                rounded-lg w-24 py-2 hover:bg-orange-500 duration-300 text-center items-center mt-5'
+                initial={{scale: 1}}
+                animate={{ scale: 1.2}}
+                transition={{repeat: Infinity, duration: 1}}
+                className='bg-orange-400 text-white font-semibold items-center flex flex-col
+                rounded-lg w-24 py-1 hover:bg-orange-500 duration-300 text-center items-center mt-5 cursor-pointer'
                 >
-                    Дізнатись більше
-                </button>
+                    <span>Дізнатись більше</span>
+                    <span><BsFillCaretDownFill className='w-8 h-8'/></span>
+                </motion.div>
             </div>
         ) : (
             <div className='flex flex-col gap-16 mt-8 mb-8'>
