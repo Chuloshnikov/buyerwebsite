@@ -68,7 +68,7 @@ const AboutPaymentSection = ({ refProp }) => {
 
   return (
     <>
-      <div className='xs:flex-col md:flex-row flex gap-4 text-center justify-center text-lg text-gray-800 font-semibold'>
+      <div className='xs:flex-col md:flex-row mx-auto flex gap-4 text-center justify-center text-lg text-gray-800 font-semibold'>
         <motion.div
           variants={column1}
           initial="hidden"
