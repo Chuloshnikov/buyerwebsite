@@ -142,7 +142,7 @@ const PaymentPage: React.FC<PaymentPageProps> = ({ amount }) => {
       <div className='mx-auto shadow-bannerShadow p-5'>
         <form className='flex flex-col gap-5'>
           <div className='flex flex-col'>
-            <label>Введіть ваше ім'я:</label>
+            <label>Введіть ваше ім&apos;я:</label>
             <input
               onChange={e => setClientName(e.target.value)}
               className='border-b-[2px] border-b-gray-400 text-gray-700'
