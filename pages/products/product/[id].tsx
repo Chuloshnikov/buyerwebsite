@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import default_product from "../../../assets/icons/default_product.png";
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../../redux/buyerslice';
+import { addToCart } from '../../../redux/buyerSlice';
 import toast, { Toaster } from 'react-hot-toast';
 
 import "swiper/css";
