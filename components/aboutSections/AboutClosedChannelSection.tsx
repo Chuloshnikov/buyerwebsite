@@ -74,11 +74,11 @@ const AboutClosedChannelSection = () => {
           variants={leftColumn}
           initial="hidden"
           animate={leftColumnVisible ? "visible" : "hidden"}
-          className='container'>
+          className='container items-center flex justify-center'>
             <Image src={telegramImg} width={200}/>
           </motion.div>
           <motion.div
-          className='container'
+          className='container flex justify-center items-center text-center'
           ref={rightColumnRef}
           variants={rightColumn}
           initial="hidden"
@@ -94,7 +94,7 @@ const AboutClosedChannelSection = () => {
                       <p>Щоб потрапити до каналу пиши у дірект Instagram сторінки:</p>
                     </div>
                     <Link 
-                        className='-ml-12'
+                        className='md:-ml-12 xs:ml-0'
                         href="https://www.instagram.com/anastasia_zahorodnia_work/"
                         >
                           <Image src={instagramLogo} width={50} height={50}/>

@@ -67,7 +67,7 @@ const Navbar = () => {
               <div className='flex items-center md:gap-3 xs:gap-1'>
                 <div>
                 <div 
-                className='xs:block lg:hidden'
+                className='xs:block mdl:hidden'
                 onClick={toogleMenu}>
                   {openMenu === true ? <BiMenuAltRight className='w-7 h-7'/> : <BiMenu className='w-7 h-7'/>}
                 </div>
@@ -143,7 +143,7 @@ const Navbar = () => {
               <div className=''>
                 <ul className='flex gap-7 justify-center items-center'>
                   <li
-                  className='xs:hidden lg:block'
+                  className='xs:hidden mdl:block'
                   >
                     <Link
                     className='font-semibold hover:border-orange-500 hover:border-b-2 my-4'
@@ -160,12 +160,12 @@ const Navbar = () => {
                       </Link>
                     <p className='xs:hidden mdl:block'>Anastasiia</p>
                   </li>
-                  <li className='xs:hidden lg:block'>
+                  <li className='xs:hidden mdl:block'>
                     <Link
                     className='font-semibold hover:border-orange-500 hover:border-b-2 my-4'
                     href="/faq">FAQ</Link>
                   </li>
-                  <li className='font-semibold my-4 xs:hidden lg:block'>
+                  <li className='font-semibold my-4 xs:hidden mdl:block'>
                     {userInfo && (
                     <li onClick={toogleMenu}>
                         <Link 

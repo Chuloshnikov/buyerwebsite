@@ -1,3 +1,5 @@
+import React, { useEffect } from 'react';
+import { initGA, logPageView } from '../lib/ga';
 import type { AppProps } from 'next/app';
 import Layout from '../components/Layout';
 import "swiper/css";
@@ -11,6 +13,13 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { SessionProvider } from "next-auth/react";
 
 export default function App({ Component, pageProps: { session, ...pageProps }, }: AppProps) {
+
+  useEffect(() => {
+    // Google Analytics
+    initGA();
+    logPageView();
+  }, []);
+
   return (
     <Provider store={store}>
         <SessionProvider session={session}>
