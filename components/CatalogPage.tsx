@@ -6,7 +6,7 @@ import { GoPlus } from 'react-icons/go';
 import Link from 'next/link';
 import default_product from "../assets/icons/default_product.png";
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/buyerslice';
+import { addToCart } from '../redux/buyerSlice';
 import toast, { Toaster } from 'react-hot-toast';
 
 interface Props {
