@@ -76,7 +76,7 @@ const AboutAvailableSection = () => {
           className='container'>
             <div className='w-[300px] mt-10'>
                 <div>
-                      <Image src={availableBox} width={150} className="absolute mt-5 ml-20 opacity-10"/>
+                      <Image src={availableBox} width={150} className="absolute mt-5 ml-20 opacity-10" alt="box"/>
                   </div>
                   <div className='w-full flex flex-col gap-10 mt-5'>
                     <div className='flex flex-col gap-4 leading-5 text-lg font-semibold'>
@@ -100,7 +100,7 @@ const AboutAvailableSection = () => {
           initial="hidden"
           animate={rightColumnVisible ? "visible" : "hidden"}
           >
-              <Image src={basketImg} width={200}/>
+              <Image src={basketImg} width={200} alt="basket"/>
           </motion.div>
         </div>
     </>

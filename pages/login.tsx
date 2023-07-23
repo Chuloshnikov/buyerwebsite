@@ -118,7 +118,7 @@ const Login = () => {
                             py-1 mx-12 rounded-md hover:scale-105 duration-300'
                         >
                             <span>Авторизація з Google</span>
-                            <Image src={googleLogo} width={14} height={14}/>
+                            <Image src={googleLogo} width={14} height={14} alt="google"/>
                         </button>
                         <button 
                             onClick={handleInstagramSignIn}
@@ -127,7 +127,7 @@ const Login = () => {
                             py-1 mx-12 rounded-md hover:scale-105 duration-300'
                         >
                             <span>Авторизація з Instagram</span>
-                            <Image src={instagramLogo} width={14} height={14}/>
+                            <Image src={instagramLogo} width={14} height={14} alt="instagram"/>
                         </button>
                         <button 
                             onClick={handleFacebookSignIn}
@@ -136,7 +136,7 @@ const Login = () => {
                             py-1 mx-12 rounded-md hover:scale-105 duration-300'
                         >
                             <span>Авторизація з Facebook</span>
-                            <Image src={facebookLogo} width={14} height={14}/>
+                            <Image src={facebookLogo} width={14} height={14} alt="facebook"/>
                         </button>
                     </div>
                 <p className='mt-10 text-xs font-semibold text-center text-gray-400'>
