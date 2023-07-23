@@ -9,9 +9,9 @@ const AboutInfoSection = () => {
 
   useEffect(() => {
     const sequence = async () => {
-      await controls.start("visible1");
-      await controls.start("visible2");
-      await controls.start("visible3");
+      await controls?.start("visible1");
+      await controls?.start("visible2");
+      await controls?.start("visible3");
     };
 
     sequence();

@@ -132,7 +132,7 @@ const Navbar = () => {
                 <a className='xs:block absolute top-[740%] right-[9.9%]' href="tel:+38-093-996-10-87">
                   <motion.div
                     initial={{ rotate: 0, scale: 1 }} 
-                    animate={{ rotate: [0, 30, -50, 0], scale: 1.1 }}
+                    animate={{ rotate: [0, 30, -30, 0], scale: 1.1 }}
                     transition={{repeat: Infinity, duration: 0.8}}
                     className="p-1 rounded-full bg-green-500 shadow-lg"
                     >
