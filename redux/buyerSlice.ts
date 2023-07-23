@@ -12,7 +12,7 @@ const initialState: BuyerState = {
     userInfo: null,
 };
 
-export const buyerslice = createSlice({
+export const buyerSlice = createSlice({
     name: 'buyer',
     initialState,
     reducers: {
@@ -63,5 +63,5 @@ export const buyerslice = createSlice({
         }
     });
 
-export const { addToCart, deleteItem, plusQuantity, minusQuantity, resetCart, addUser, removeUser } = buyerslice.actions;
-export default buyerslice.reducer;
+export const { addToCart, deleteItem, plusQuantity, minusQuantity, resetCart, addUser, removeUser } = buyerSlice.actions;
+export default buyerSlice.reducer;
