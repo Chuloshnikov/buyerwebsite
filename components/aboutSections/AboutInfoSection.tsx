@@ -50,11 +50,10 @@ const AboutInfoSection = () => {
         className='xs:flex-col md:flex-row flex gap-4 text-center justify-center text-lg text-gray-800 font-semibold'
       >
         <motion.div
-          className="box"
           variants={column1}
           initial="hidden"
           animate={controls}
-          className='flex flex-col gap-4 py-8 px-4 shadow-bannerShadow min-w-[250px] hover:bg-orange-400 hover:text-white duration-300'
+          className='box flex flex-col gap-4 py-8 px-4 shadow-bannerShadow min-w-[250px] hover:bg-orange-400 hover:text-white duration-300'
         >
           <div className='flex gap-2 justify-center'>
             <FaHandshake className='w-10 h-10' />
@@ -64,11 +63,10 @@ const AboutInfoSection = () => {
           <span>З вами з 2012 року</span>
         </motion.div>
         <motion.div
-          className="box"
           variants={column2}
           initial="hidden"
           animate={controls}
-          className='flex flex-col gap-4 py-8 px-4 shadow-bannerShadow min-w-[250px] hover:bg-orange-400 hover:text-white duration-300'
+          className='box flex flex-col gap-4 py-8 px-4 shadow-bannerShadow min-w-[250px] hover:bg-orange-400 hover:text-white duration-300'
         >
           <div className='flex gap-2 justify-center'>
             <BsFillBoxSeamFill className='w-8 h-8' />
@@ -79,11 +77,10 @@ const AboutInfoSection = () => {
           <span>Більше 2000 замовлень</span>
         </motion.div>
         <motion.div
-          className="box"
           variants={column3}
           initial="hidden"
           animate={controls}
-          className='flex flex-col gap-4 py-8 px-4 shadow-bannerShadow min-w-[250px] hover:bg-orange-400 hover:text-white duration-300'
+          className='box flex flex-col gap-4 py-8 px-4 shadow-bannerShadow min-w-[250px] hover:bg-orange-400 hover:text-white duration-300'
         >
           <div className='flex gap-2 justify-center'>
             <FaSuitcase className='w-8 h-8' />

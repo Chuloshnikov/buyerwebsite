@@ -27,7 +27,7 @@ const AboutPaymentSection = ({ refProp }) => {
     return () => {
       window.removeEventListener('scroll', onScroll);
     };
-  }, [controls]);
+  }, [controls, refProp]);
 
   const isElementInViewport = (element) => {
     const rect = element.getBoundingClientRect();
