@@ -34,7 +34,7 @@ const AboutOrderingSection = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [leftColumnRef, rightColumnRef]);
 
   const leftColumn = {
     hidden: { 
@@ -74,7 +74,7 @@ const AboutOrderingSection = () => {
         animate={leftColumnVisible ? "visible" : "hidden"}
       >
         <div className='w-[300px]'>
-            <Image src={plane}/>
+            <Image src={plane} alt="plane"/>
         </div>
         
       </motion.div>
@@ -87,7 +87,7 @@ const AboutOrderingSection = () => {
       >
         <div className='w-[300px]'>
             <div>
-              <Image src={box} className="absolute ml-10 mt-2 opacity-20"/>
+              <Image src={box} className="absolute ml-10 mt-2 opacity-20" alt="box"/>
             </div>
             <div>
               <div className='text-base font-semibold leading-5'>

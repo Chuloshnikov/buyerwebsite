@@ -26,7 +26,7 @@ const CustomerOrders = () => {
         }).catch(error => {
             console.error(error);
         });
-    }, []);
+    }, [userInfo?.email]);
 
     const orderStatus = (status) => {
         if (status === 0) {
