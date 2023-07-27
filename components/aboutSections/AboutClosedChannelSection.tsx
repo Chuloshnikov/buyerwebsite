@@ -75,7 +75,7 @@ const AboutClosedChannelSection = () => {
           initial="hidden"
           animate={leftColumnVisible ? "visible" : "hidden"}
           className='container items-center flex justify-center'>
-            <Image src={telegramImg} width={200}/>
+            <Image src={telegramImg} width={200} alt="telegramImg"/>
           </motion.div>
           <motion.div
           className='container flex justify-center items-center text-center'
@@ -86,7 +86,7 @@ const AboutClosedChannelSection = () => {
           >
               <div className='w-[300px]'>
                 <div>
-                      <Image src={quietImg} width={100} className="absolute  ml-20 opacity-10"/>
+                      <Image src={quietImg} width={100} className="absolute  ml-20 opacity-10" alt="quietImg"/>
                   </div>
                   <div className='w-full flex flex-col gap-6 mt-5 items-center'>
                     <div className='flex flex-col gap-2 leading-5 text-base font-semibold'>
@@ -97,7 +97,7 @@ const AboutClosedChannelSection = () => {
                         className='md:-ml-12 xs:ml-0'
                         href="https://www.instagram.com/anastasia_zahorodnia_work/"
                         >
-                          <Image src={instagramLogo} width={50} height={50}/>
+                          <Image src={instagramLogo} width={50} height={50} alt="instagramLogo"/>
                     </Link>
                   </div>
             </div>
