@@ -23,6 +23,22 @@ const Navbar = () => {
   const menuRef = useRef(null);
   const { data: session } = useSession();
 
+  const menuVariants = {
+    hidden: {
+      x: '100%',
+      opacity: 0
+    },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 50,
+        damping: 10
+      }
+    }
+  };
+
 
   const toogleMenu = () => {
     setOpenMenu(!openMenu);
@@ -77,7 +93,12 @@ const Navbar = () => {
                 onClick={toogleMenu}
                 className='absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-5 md:hidden'
                 >
-                  <div className='absolute z-10 right-0 p-8 w-[50%] h-[80%] flex flex-col gap-2 border-[1px]
+                  <motion.div
+                  className="menu"
+                  initial="hidden"
+                  animate={openMenu ? 'visible' : 'hidden'}
+                  variants={menuVariants}
+                  className='absolute z-10 right-0 p-8 w-[50%] h-[50%] flex flex-col gap-2 border-[1px]
                         border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
                       >
                       <div className='flex w-full justify-end'>
@@ -102,7 +123,7 @@ const Navbar = () => {
                           }
                         </ul>
                       </nav>
-                  </div>
+                  </motion.div>
                 </div>
                 ) : ''}
                 </div>
