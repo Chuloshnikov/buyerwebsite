@@ -94,11 +94,10 @@ const Navbar = () => {
                 className='absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-5 md:hidden'
                 >
                   <motion.div
-                  className="menu"
                   initial="hidden"
                   animate={openMenu ? 'visible' : 'hidden'}
                   variants={menuVariants}
-                  className='absolute z-10 right-0 p-8 w-[50%] h-[50%] flex flex-col gap-2 border-[1px]
+                  className='menu absolute z-10 right-0 p-8 w-[50%] h-[50%] flex flex-col gap-2 border-[1px]
                         border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
                       >
                       <div className='flex w-full justify-end'>
