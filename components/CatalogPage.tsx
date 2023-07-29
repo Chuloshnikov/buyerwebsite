@@ -18,10 +18,10 @@ const CatalogPage = ({ productData }: Props) => {
   const dispatch = useDispatch();
 
   return (
-    <div className='py-6 px-4 grid xs:grid-cols-1 md:grid-cols-2 mdl:grid-cols-3 lgl:grid-cols-4  gap-4'>
+    <div className='py-6 px-4 grid max-h-[3500px] xs:grid-cols-1 md:grid-cols-2 mdl:grid-cols-3 lgl:grid-cols-4  gap-4'>
         {productData?.length > 0 && productData.map((item: Item) => (
             <div key={item._id} className="border-[1px] border-gray-200 mb-6 group shadow-lg">
-              <div className="w-full h-[350px] overflow-hidden p-1">
+              <div className="w-full xs:h-[200px] overflow-hidden p-1">
                 <Image 
                   className='w-full h-full object-contain scale-100 group-hover:scale-105 duration-300'
                   width={300} 
