@@ -66,56 +66,57 @@ const Navbar = () => {
            <div className='max-w-container mx-auto flex justify-between items-center border-b-[1px] border-b-gray-300'>
               <div className='flex items-center md:gap-3 xs:gap-1'>
                 <div>
-                <div 
-                className='xs:block mdl:hidden'
-                onClick={toogleMenu}>
-                  {openMenu === true ? <BiMenuAltRight className='w-7 h-7'/> : <BiMenu className='w-7 h-7'/>}
-                </div>
-                {openMenu ? 
-                (
-                <div 
-                onClick={toogleMenu}
-                className='absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-5 md:hidden'
-                >
-                  <div
-                  className='absolute z-10 right-0 p-8 w-[50%] h-[50%] flex flex-col gap-2 border-[1px]
-                        border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
-                      >
-                      <div className='flex w-full justify-end'>
-                        <button onClick={toogleMenu} className='block'><AiOutlineClose className='w-5 h-5'/></button>
+                    <div 
+                      className='xs:block mdl:hidden'
+                      onClick={toogleMenu}>
+                        {openMenu === true ? <BiMenuAltRight className='w-7 h-7'/> : <BiMenu className='w-7 h-7'/>}
                       </div>
-                      <nav className='p-10'>
-                        <ul className='flex flex-col gap-3'>
-                          <li onClick={toogleMenu}><Link href="/products">Каталог</Link></li>
-                          <li onClick={toogleMenu}><Link href="/faq">FAQ</Link></li>
-                          {!userInfo && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
-                          {userInfo && (<li onClick={toogleMenu}><Link href="/profile">Мій профіль</Link></li>)}
-                          {
-                          session && (
-                          <li onClick={toogleMenu}>
-                            <span 
-                            className='cursor-pointer'
-                              onClick={() => signOut()}
-                              >
-                                Вийти
-                            </span>
-                          </li>)
-                          }
-                        </ul>
-                      </nav>
-                  </div>
-                </div>
+                      {openMenu ? 
+                      (
+                      <div 
+                      onClick={toogleMenu}
+                      className='absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-5 md:hidden'
+                      >
+                        <div
+                        className='absolute z-10 right-0 p-8 w-[50%] h-[50%] flex flex-col gap-2 border-[1px]
+                              border-gray-300 items-center bg-white rounded-md shadow-bannerShadow'
+                            >
+                            <div className='flex w-full justify-end'>
+                              <button onClick={toogleMenu} className='block'><AiOutlineClose className='w-5 h-5'/></button>
+                            </div>
+                            <nav className='p-10'>
+                              <ul className='flex flex-col gap-3'>
+                                <li onClick={toogleMenu}><Link href="/products">Каталог</Link></li>
+                                <li onClick={toogleMenu}><Link href="/faq">FAQ</Link></li>
+                                {!userInfo && (<li onClick={toogleMenu}><Link href="/login">Увійти</Link></li>)}
+                                {userInfo && (<li onClick={toogleMenu}><Link href="/profile">Мій профіль</Link></li>)}
+                                {
+                                session && (
+                                <li onClick={toogleMenu}>
+                                  <span 
+                                  className='cursor-pointer'
+                                    onClick={() => signOut()}
+                                    >
+                                      Вийти
+                                  </span>
+                                </li>)
+                                }
+                              </ul>
+                            </nav>
+                        </div>
+                    </div>
                 ) : ''}
                 </div>
+                {/* messages */}
                 <div className='absolute top-[830%] right-[10%]'>
-                  <div
+                  <motion.div
                   initial={{scale: 1}}
                   animate={{ scale: 1.2}}
                   transition={{repeat: Infinity, duration: 2}}
                   className="p-1 bg-blue-500 rounded-full shadow-lg"
                   >
                       <AiOutlineMessage onClick={toogleMessagePanel} className='w-10 h-10 text-white rounded-full duration-300'/>
-                  </div>
+                  </motion.div>
                   {openMessagePanel ? (
                   <div 
                   onClick={toogleMessagePanel}
@@ -148,6 +149,7 @@ const Navbar = () => {
                   </div>
                   ) : ''}
                 </div>
+                {/* phone */}
                 <a className='border:none xs:hidden lg:block md:text-base' href="tel:+38-093-996-10-87">+38 093 996 10 87</a>
                 <a className='xs:block absolute top-[740%] right-[9.9%]' href="tel:+38-093-996-10-87">
                   <motion.div
