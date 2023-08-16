@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
 import Head from 'next/head';
-import ReactGA from 'react-ga';
 import { Inter } from 'next/font/google';
 import Banner from '../components/Banner';
 import AboutInfoSection from '../components/aboutSections/AboutInfoSection';
@@ -11,11 +9,6 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 export default function Home() {
-
-  useEffect(() => {
-    ReactGA.initialize(process.env.NEXT_PUBLIC_GA_TRACKING_ID);
-    ReactGA.pageview(window.location.pathname);
-  }, []);
 
   return (
     <>

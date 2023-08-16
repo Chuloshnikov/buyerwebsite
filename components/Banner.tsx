@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import ReactGA from 'react-ga';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -25,6 +26,11 @@ const Banner = () => {
     setBannerInfo(result.data);
     setIsLoading(false);
   });
+}, []);
+
+useEffect(() => {
+  ReactGA.initialize(process.env.NEXT_PUBLIC_GA_TRACKING_ID);
+  ReactGA.pageview(window.location.pathname + window.location.search);
 }, []);
 
   return (
