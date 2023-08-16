@@ -29,7 +29,7 @@ const Banner = () => {
 }, []);
 
 useEffect(() => {
-  const ga4react = new GA4React(NEXT_PUBLIC_GA_TRACKING_ID); 
+  const ga4react = new GA4React(process.env.NEXT_PUBLIC_GA_TRACKING_ID); 
   ga4react.initialize().then().catch(error => console.error(error));
 }, []);
 
