@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import ReactGA from 'react-ga';
+import GA4React from 'react-ga4';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -29,8 +29,8 @@ const Banner = () => {
 }, []);
 
 useEffect(() => {
-  ReactGA.initialize(process.env.NEXT_PUBLIC_GA_TRACKING_ID);
-  ReactGA.pageview(window.location.pathname + window.location.search);
+  const ga4react = new GA4React(NEXT_PUBLIC_GA_TRACKING_ID); 
+  ga4react.initialize().then().catch(error => console.error(error));
 }, []);
 
   return (
