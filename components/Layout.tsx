@@ -9,11 +9,13 @@ interface Props{
 
 const Layout = ({children}: Props) => {
   return (
-    <>
+    <div
+    className="flex flex-col h-screen justify-between"
+    >
       <Navbar/>
           {children}
       <Footer/>
-    </>
+    </div>
   )
 }
 
