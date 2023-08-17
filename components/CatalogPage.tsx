@@ -32,27 +32,38 @@ const CatalogPage = ({ productData }: Props) => {
                 {/* Description */}
                 <div className='px-2 py-4 flex flex-col justify-center'>
                   <div className='text-base text-white flex justify-between'>
+                    {item.quantity ? (
                     <button 
-                    onClick={() => dispatch(
-                      addToCart({
-                        _id: item._id,
-                        title: item.title,
-                        brand: item.brand,
-                        oldPrice: item.oldPrice,
-                        price: item.price,
-                        description: item.description,
-                        sizes: item.sizes,
-                        category: item.category,
-                        images: item.images,
-                        quantity: 1,
-                    })) && toast.success(`${item.title.substring(0,20)} додано у кошик`)
-                  }
+                        onClick={() => dispatch(
+                          addToCart({
+                            _id: item._id,
+                            title: item.title,
+                            brand: item.brand,
+                            oldPrice: item.oldPrice,
+                            price: item.price,
+                            description: item.description,
+                            sizes: item.sizes,
+                            category: item.category,
+                            images: item.images,
+                            quantity: 1,
+                        })) && toast.success(`${item.title.substring(0,20)} додано у кошик`)
+                      }
                     className=' p-2 rounded-lg bg-orange-400 flex items-center justify-center gap-1
                     hover:bg-orange-500 duration-300'
                     >
                       <span><GoPlus/></span>
                       У кошик
                     </button>
+                    ) : (
+                        <button 
+                          disabled
+                          className=' p-2 rounded-lg bg-gray-400 flex items-center justify-center gap-1'
+                          >
+                          <span><GoPlus/></span>
+                        У кошик
+                      </button>
+                      )
+                    }
                     <Link href={`products/product/${item._id}`}>
                         <button className='p-2 rounded-lg bg-orange-400 flex items-center justify-center
                         hover:bg-orange-500 duration-300'

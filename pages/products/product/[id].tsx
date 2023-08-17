@@ -37,7 +37,6 @@ const ProductDetails = () => {
 
   const _id = product._id;
 
-  console.log(product);
   return (
     <div className='w-full bg-white text-gray-800 px-4'>
        <div className='max-w-contentContainer mx-auto flex items-center py-4 xs:flex-col lg:flex-row'>
@@ -118,26 +117,39 @@ const ProductDetails = () => {
                 <p className='text-sm font-base'>{product.description}</p>
             </div>
             <div className='p-2'>
-                <button 
-                onClick={() => dispatch(addToCart({
-                  _id: product._id,
-                  title: product.title,
-                  brand: product.brand,
-                  oldPrice: product.oldPrice,
-                  price: product.price,
-                  description: product.description,
-                  sizes: product.sizes,
-                  category: product.category,
-                  images: product.images,
-                  quantity: product.quantity,
-                })) && toast.success(`${product.title.substring(0,20)} додано у кошик`)
-              }
-                className='xs:hidden mdl:flex items-center gap-1 py-3 px-2 bg-orange-400 text-white rounded-md 
-                hover:bg-orange-500 duration-300'
-                >
-                  <span><GoPlus/></span>
-                    Додати у кошик
-                </button>
+                {
+                  product.quantity ? (
+                    <button 
+                    onClick={() => dispatch(addToCart({
+                        _id: product._id,
+                        title: product.title,
+                        brand: product.brand,
+                        oldPrice: product.oldPrice,
+                        price: product.price,
+                        description: product.description,
+                        sizes: product.sizes,
+                        category: product.category,
+                        images: product.images,
+                        quantity: product.quantity,
+                      })) && toast.success(`${product.title.substring(0,20)} додано у кошик`)
+                  }
+                    className='xs:hidden mdl:flex items-center gap-1 py-3 px-2 bg-orange-400 text-white rounded-md 
+                    hover:bg-orange-500 duration-300'
+                    >
+                      <span><GoPlus/></span>
+                        Додати у кошик
+                    </button>
+                  ) : (
+                      <button 
+                      disabled
+                      className='xs:hidden mdl:flex items-center gap-1 py-3 px-2 bg-gray-400 text-white rounded-md'
+                      >
+                        <span><GoPlus/></span>
+                          Додати у кошик
+                      </button>
+                  )
+                }
+                
             </div>
           </div>
        </div>
