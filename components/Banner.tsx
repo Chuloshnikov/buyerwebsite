@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import GA4React from 'react-ga4';
+import GA4React from "ga-4-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -28,10 +28,11 @@ const Banner = () => {
   });
 }, []);
 
-useEffect(() => {
-  const ga4react = new GA4React(process.env.NEXT_PUBLIC_GA_TRACKING_ID); 
-  ga4react.initialize().then().catch(error => console.error(error));
-}, []);
+
+  useEffect(() => {
+    const ga4react = new GA4React(process.env.NEXT_PUBLIC_GA_TRACKING_ID); // Замініть на свій код відстеження
+    ga4react.initialize().then().catch(error => console.error(error));
+  }, []);
 
   return (
         <div className='w-full bg-white px-4 py-6 flex gap-4 border-b-[1px]'>
