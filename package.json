@@ -25,6 +25,7 @@
     "eslint-config-next": "13.2.4",
     "formik": "^2.2.9",
     "framer-motion": "^10.12.16",
+    "ga-4-react": "^0.1.281",
     "liqpay": "^0.0.1",
     "mongodb": "^5.7.0",
     "mongoose": "^7.0.3",
@@ -41,6 +42,7 @@
     "react-spinners": "^0.13.8",
     "redux-persist": "^6.0.0",
     "swiper": "^9.1.1",
+    "swr": "^2.2.1",
     "typescript": "5.0.2"
   },
   "devDependencies": {
